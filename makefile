@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-o test -g
-LIBS=-lSDL2 -lGL -lGLEW -lm
+LIBS=-lSDL2 -lGL -lm
 HEADERS=-I src/
 SRC=*.c src/*.c
 

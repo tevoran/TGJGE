@@ -12,6 +12,7 @@
 
 //necessary additional libraries
 #include <SDL2/SDL.h>
+#include <GL/gl.h>
 
 
 //function definitons

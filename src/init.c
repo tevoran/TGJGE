@@ -1,6 +1,7 @@
 #include "TGJGE.h"
 
 extern SDL_Window *TG_main_window;
+extern SDL_GLContext TG_gl_context; //SDL_GLContext is an alias for *void
 
 void TG_init(const char* window_title)
 {
@@ -21,7 +22,7 @@ void TG_init(const char* window_title)
 			SDL_WINDOWPOS_CENTERED,
 			1366,
 			768,
-			0);
+			SDL_WINDOW_OPENGL);
 
 	if(TG_main_window!=NULL)
 	{
@@ -31,6 +32,23 @@ void TG_init(const char* window_title)
 	{
 		printf("ERROR\n");
 	}
+
+	printf("creating OpenGL context...");
+		TG_gl_context=SDL_GL_CreateContext(TG_main_window);
+
+	if(TG_gl_context!=NULL)
+	{
+		printf("done\n");
+	}
+	else
+	{
+		printf("ERROR\n");
+	}
+
+    glClearColor(0.3,0.1,0.1,1.0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    SDL_GL_SwapWindow(TG_main_window);
 
 		SDL_Delay(3000);
 
