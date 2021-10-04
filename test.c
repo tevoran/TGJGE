@@ -3,6 +3,7 @@
 
 int main()
 {
-	printf("hello world\n");
+	TG_init("test window");
+
 	return 0;
 }
