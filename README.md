@@ -1,7 +1,7 @@
 # TGJGE
 
 Welcome this is a 2D game engine called TGJGE. It simply stands for T3V's Game Jam Game Engine.
-The engine is written in C with OpenGL4.5 to get the biggest compatibility possible. This way
+The engine is written in C with OpenGL3.3 to get the biggest compatibility possible. This way
 it is easily usable in C and C++.
 
 You are free to use/modify/distribute the engine for your games or projects. But please act
@@ -10,7 +10,7 @@ accordingly to the GPLv3 license which you can read in this repository.
 ## Dependencies
 
 The game engine is designed to have light dependencies and a high portability across various
-platforms. Therefore you only need SDL2 and OpenGL4.5 available on your system to compile the
+platforms. Therefore you only need SDL2 and OpenGL3.3 available on your system to compile the
 engine with a C99 compiler.
 
 ### Compilation

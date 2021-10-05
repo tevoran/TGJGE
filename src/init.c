@@ -48,6 +48,20 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 		printf("ERROR\n");
 	}
 
+	printf("checking if OpenGL version is at least 3.3...");
+		if(SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3)!=0)
+		{
+			printf("ERROR\n");
+		}
+		if(SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3)!=0)
+		{
+			printf("ERROR\n");
+		}
+		else
+		{
+			printf("done\n");
+		}
+
 	printf("creating OpenGL context...");
 		TG_gl_context=SDL_GL_CreateContext(TG_main_window);
 
