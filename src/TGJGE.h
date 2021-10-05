@@ -9,6 +9,7 @@
 
 //necessary standard libraries
 #include <stdio.h>
+#include <stdbool.h>
 
 //necessary additional libraries
 #include <SDL2/SDL.h>
@@ -16,7 +17,7 @@
 
 
 //function definitons
-void TG_init(const char* window_title);
+void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_toggle);
 
 #endif
 
