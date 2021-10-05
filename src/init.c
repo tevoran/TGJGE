@@ -60,11 +60,4 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 		printf("ERROR\n");
 	}
 
-    glClearColor(0.3,0.1,0.1,1.0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    SDL_GL_SwapWindow(TG_main_window);
-
-		SDL_Delay(3000);
-
 }
