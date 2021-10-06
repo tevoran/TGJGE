@@ -10,7 +10,7 @@ accordingly to the GPLv3 license which you can read in this repository.
 ## Dependencies
 
 The game engine is designed to have light dependencies and a high portability across various
-platforms. Therefore you only need SDL2 and OpenGL3.3 available on your system to compile the
+platforms. Therefore you only need SDL2, GLEW and OpenGL3.3 available on your system to compile the
 engine with a C99 compiler.
 
 ### Compilation
