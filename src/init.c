@@ -1,4 +1,5 @@
 #include "TGJGE.h"
+#include "TGJGE_internal.h"
 
 extern SDL_Window *TG_main_window;
 extern SDL_GLContext TG_gl_context; //SDL_GLContext is an alias for *void
@@ -74,4 +75,13 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 		printf("ERROR\n");
 	}
 
+	//using glew to avoid compatibility issues with OpenGL
+	if(glewInit()!=GLEW_OK)
+	{
+		printf("ERROR: GLEW couldn't be initialized\n");
+	}
+
+	//preparing shaders
+	TG_load_shader(TG_VERTEX, "shaders/vertex.glsl");
+	TG_load_shader(TG_FRAGMENT, "shaders/fragment.glsl");
 }

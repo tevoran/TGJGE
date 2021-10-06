@@ -1,6 +1,6 @@
-#version 450
+#version 330
 
 void main()
 {
-	
+
 }
