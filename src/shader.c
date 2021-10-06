@@ -44,8 +44,7 @@ void TG_load_shader(const int shader_type, const char *shader_location)
 	fseek(shader_file, 0, SEEK_SET);
 
 	//getting source ready in memory
-	shader_size++;
-	shader_buffer=malloc(shader_size);
+	shader_buffer=malloc(shader_size+1);
 	shader_buffer[shader_size]=0; //add end of string for the shader compiler
 	fread(shader_buffer, shader_size, 1, shader_file);
 

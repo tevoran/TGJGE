@@ -84,4 +84,7 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 	//preparing shaders
 	TG_load_shader(TG_VERTEX, "shaders/vertex.glsl");
 	TG_load_shader(TG_FRAGMENT, "shaders/fragment.glsl");
+
+	//setting certain OpenGL values
+	glClearDepth(1.0f);
 }
