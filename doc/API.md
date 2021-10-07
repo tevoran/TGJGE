@@ -22,3 +22,16 @@ void TG_flip(float r, float g, float b);
 
 The TG_flip function takes in three floats as parameters. They are used to set the background color of the screen.
 
+## Objects
+
+In TGJGE quads are used to render everything on the screen. They are
+simply called TG_object;
+
+The basic structure of the usage of a TG_object object is to create,
+doing some stuff and destroy it.
+
+```c
+TG_object* TG_new_object();
+void TG_render_object(const TG_object *object);
+void TG_destroy_object(TG_object *object);
+```
