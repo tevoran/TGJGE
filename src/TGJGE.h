@@ -17,9 +17,17 @@
 
 struct TG_object
 {
+	//renderer related stuff
 	GLuint vao;
 	GLuint vbo;
 	GLuint ibo;
+
+	//transformations
+	float scale_x;
+	float scale_y;
+	float translation_x;
+	float translation_y;
+
 } typedef TG_object;
 
 #include "TGJGE_internal.h"
@@ -29,9 +37,16 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 //swaps the framebuffer and takes in the clear color as a parameter
 void TG_flip(float r, float g, float b); 
 
-TG_object* TG_new_object();
+TG_object* TG_new_object(
+	float size_x,
+	float size_y,
+	float pos_x,
+	float pos_y);
 void TG_render_object(const TG_object *object);
 void TG_destroy_object(TG_object *object);
+void TG_resize_object(TG_object *object, float size_x, float size_y);
+void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
+
 
 
 

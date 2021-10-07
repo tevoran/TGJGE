@@ -2,10 +2,19 @@
 
 layout(location = 0) in vec2 aPos;
 
+uniform vec2 aScale;
+uniform vec2 aTranslation;
+
 void main()
 {
+	vec2 Pos = aPos;
+
+	//transforming the quad
+	Pos = aScale * Pos;
+	Pos = aTranslation + Pos;
+
 	//converting screen coordinates to OpenGL's NDC
-	vec2 Pos = aPos * 2;
+	Pos = Pos * 2;
 	Pos = Pos - 1;
 
 	//setting final position
