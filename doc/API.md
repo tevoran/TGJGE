@@ -35,3 +35,18 @@ TG_object* TG_new_object();
 void TG_render_object(const TG_object *object);
 void TG_destroy_object(TG_object *object);
 ```
+
+### Transformations
+
+There are several transformations that can be applied to the basic quad.
+You can set it at any position and can scale it.
+
+It is important to note that the origin of the engine's coordinate system is
+the left bottom corner. It's the same for both the root window and the used
+quads.
+
+```c
+
+void TG_resize_object(TG_object *object, float size_x, float size_y);
+void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
+```
