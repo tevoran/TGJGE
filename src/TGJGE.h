@@ -17,18 +17,23 @@
 
 struct TG_object
 {
-
+	GLuint vao;
+	GLuint vbo;
+	GLuint ibo;
 } typedef TG_object;
 
 #include "TGJGE_internal.h"
 
 //function definitons
 void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_toggle);
-
 //swaps the framebuffer and takes in the clear color as a parameter
 void TG_flip(float r, float g, float b); 
 
-void TG_render();
+TG_object* TG_new_object();
+void TG_render_object(const TG_object *object);
+void TG_destroy_object(TG_object *object);
+
+
 
 
 #endif
