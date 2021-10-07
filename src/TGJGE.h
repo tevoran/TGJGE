@@ -33,7 +33,12 @@ struct TG_object
 #include "TGJGE_internal.h"
 
 //function definitons
-void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_toggle);
+void TG_init(
+	const char *window_title, 
+	int res_x, 
+	int res_y, 
+	_Bool fullscreen_toggle,
+	float desired_framerate);
 //swaps the framebuffer and takes in the clear color as a parameter
 void TG_flip(float r, float g, float b); 
 

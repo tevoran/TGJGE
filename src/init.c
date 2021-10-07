@@ -3,8 +3,14 @@
 
 extern SDL_Window *TG_main_window;
 extern SDL_GLContext TG_gl_context; //SDL_GLContext is an alias for *void
+extern unsigned int TG_desired_frametime;
 
-void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_toggle)
+void TG_init(
+	const char *window_title, 
+	int res_x, 
+	int res_y, 
+	_Bool fullscreen_toggle,
+	float desired_framerate)
 {
 	printf("starting TGJGE\n");
 
@@ -47,16 +53,19 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 	else
 	{
 		printf("ERROR\n");
+		return;
 	}
 
 	printf("checking if OpenGL version is at least 3.3...");
 		if(SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3)!=0)
 		{
 			printf("ERROR\n");
+			return;
 		}
 		if(SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3)!=0)
 		{
 			printf("ERROR\n");
+			return;
 		}
 		else
 		{
@@ -73,12 +82,14 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 	else
 	{
 		printf("ERROR\n");
+		return;
 	}
 
 	//using glew to avoid compatibility issues with OpenGL
 	if(glewInit()!=GLEW_OK)
 	{
 		printf("ERROR: GLEW couldn't be initialized\n");
+		return;
 	}
 
 	//preparing shaders
@@ -87,4 +98,8 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 
 	//setting certain OpenGL values
 	glClearDepth(1.0f);
+
+	//setting engine related stuff
+	TG_desired_frametime=1000/desired_framerate;
+	printf("trying to keep a frame time of %u ms\n", TG_desired_frametime);
 }
