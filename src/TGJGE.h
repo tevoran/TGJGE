@@ -15,12 +15,18 @@
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 
+
+struct TG_texture
+{
+} typedef TG_sprite;
+
 struct TG_object
 {
 	//renderer related stuff
-	GLuint vao;
-	GLuint vbo;
-	GLuint ibo;
+	GLuint vao; //vertex array object
+	GLuint vbo; //vertex buffer object
+	GLuint ibo; //index buffer object
+	GLuint to; //texture object
 
 	//transformations
 	float scale_x;
@@ -39,9 +45,13 @@ void TG_init(
 	int res_y, 
 	_Bool fullscreen_toggle,
 	float desired_framerate);
-//swaps the framebuffer and takes in the clear color as a parameter
-void TG_flip(float r, float g, float b); 
 
+	//swaps the framebuffer and takes in the clear color as a parameter
+void TG_flip(float r, float g, float b); 
+int TG_delta_time();
+float TG_delta_time_f();
+
+//2Dobject functions
 TG_object* TG_new_object(
 	float size_x,
 	float size_y,

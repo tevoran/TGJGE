@@ -48,6 +48,9 @@ TG_object* TG_new_object(float size_x, float size_y, float pos_x, float pos_y)
 	new_object->translation_x=pos_x;
 	new_object->translation_y=pos_y;
 
+	//initializing values
+	new_object->to=0;
+
 	return new_object;
 }
 
