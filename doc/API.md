@@ -68,3 +68,6 @@ quads.
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 ```
+
+### Textures
+

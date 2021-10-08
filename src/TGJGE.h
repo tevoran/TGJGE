@@ -16,6 +16,7 @@
 #include <GL/glew.h>
 
 
+
 struct TG_texture
 {
 	GLuint to;
@@ -64,7 +65,10 @@ void TG_use_texture_object(TG_object *object, TG_texture *texture);
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 
-TG_texture* TG_new_texture(_Bool nearest);
+
+TG_texture* TG_new_texture(
+	const char *path, 
+	_Bool linear_interpolation_toggle);
 
 
 
