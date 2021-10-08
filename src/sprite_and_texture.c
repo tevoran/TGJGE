@@ -19,20 +19,20 @@ TG_texture* TG_new_texture(
 	}
 	else
 	{
-		printf("image successfully loaded from %s\n", path);
+		printf("image successfully loaded with %i channels from %s\n", n, path);
 	}
 
 	GLfloat *tex_data=malloc(size_x*size_y*4*sizeof(GLfloat));
 	//converting raw image data to something more OpenGL friendly
-	if(n==3) //RGB
+	if(n==3 || n==4) //RGB or RGBA
 	{
 		GLfloat *tmp_ptr=tex_data;
-		for(int iy=0; iy<size_y; iy++)
+		unsigned int n1=0;
+		for(int iy=size_y-1; iy>=0; iy--)
 		{
 			for(int ix=0; ix<size_x; ix++)
 			{
-				unsigned int n1,n2;
-				n1=(iy*size_x+ix)*4;
+				unsigned int n2;
 				n2=(iy*size_x+ix)*3;
 				//R
 				tex_data[n1]=(float)img_data[n2]/255;
@@ -46,29 +46,16 @@ TG_texture* TG_new_texture(
 				tex_data[n1]=(float)img_data[n2]/255;
 				n1++;
 				//A
-				tex_data[n1]=1.0;
-			}
-		}
-	}
-	else if(n==4) //RGBA
-	{
-		GLfloat *tmp_ptr=tex_data;
-		for(int iy=0; iy<size_y; iy++)
-		{
-			for(int ix=0; ix<size_x; ix++)
-			{
-				unsigned int n=(iy*size_x+ix)*4;
-				//R
-				tex_data[n]=(float)img_data[n]/255;
-				n++;
-				//G
-				tex_data[n]=(float)img_data[n]/255;
-				n++;
-				//B
-				tex_data[n]=(float)img_data[n]/255;
-				n++;
-				//A
-				tex_data[n]=(float)img_data[n]/255;
+				if(n==3)
+				{
+					tex_data[n1]=1.0;				
+				}
+				else
+				{
+					n2++;
+					tex_data[n1]=(float)img_data[n2]/255;					
+				}
+				n1++;
 			}
 		}
 	}
@@ -77,12 +64,6 @@ TG_texture* TG_new_texture(
 		printf("ERROR: the image at %s has no RGB or RGBA values\n", path);
 		return NULL;
 	}
-
-	GLfloat test_tex[]=
-	{
-		0.1,0.7,0.1,1.0, 0.4,0.1,0.2,1.0,
-		0.4,0.1,0.2,1.0, 0.1,0.7,0.1,1.0,		
-	};
 
 	glGenTextures(1, &new_texture->to);
 	if(new_texture->to==0)
