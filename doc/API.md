@@ -22,6 +22,23 @@ void TG_flip(float r, float g, float b);
 
 The TG_flip function takes in three floats as parameters. They are used to set the background color of the screen.
 
+This function also updates the timers for each frame. This enables the
+engine's user to get the current delta time.
+
+## Time
+
+As mentioned in "Updating the window" the TG_flip() function updates
+all the timers that are used by the engine itself.
+
+To get the current delta time you can use these two functions.
+But beware they only have a ms resolution which should be enough for
+almost anything game related.
+
+```c
+int TG_delta_time();
+float TG_delta_time_f();
+```
+
 ## Objects
 
 In TGJGE quads are used to render everything on the screen. They are
