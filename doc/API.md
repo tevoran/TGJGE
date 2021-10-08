@@ -69,5 +69,36 @@ void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 ```
 
-### Textures
+### Textures/Sprites
 
+Textures can be loaded from images in the following formats JPEG, PNG, BMP,
+GIF, PSD, HDR, PIC and PNM. The textures can be attached to TG_objects and
+will be displayed with them and turn them effectively into sprites.
+
+TG_new_texture is used to create a new texture from a file located in path.
+An interesting feature is the linear interpolation toggle. If it's false then
+the texels are clearly visible with sharp borders while it's completely differen
+when it's activated with true. Then low res textures can become quite blurry
+with very loosely visible borders.
+
+```c
+TG_texture* TG_new_texture(
+	const char *path, 
+	_Bool linear_interpolation_toggle);
+```
+
+The function to assign a texture to an object. If the texture doesn't exist at
+the time of drawing then the object will most likely not be rendered although
+the exact behaviour depends on the local OpenGL implementation.
+
+```c
+void TG_use_texture_object(TG_object *object, TG_texture *texture);
+```
+
+After the texture is not used anymore then it should be destroyed by calling
+
+```c
+void TG_destroy_texture(TG_texture *texture);
+```
+
+but this should only happen when the texture isn't used on any object anymore.

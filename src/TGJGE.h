@@ -69,6 +69,7 @@ void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 TG_texture* TG_new_texture(
 	const char *path, 
 	_Bool linear_interpolation_toggle);
+void TG_destroy_texture(TG_texture *texture);
 
 
 
