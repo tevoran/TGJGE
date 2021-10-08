@@ -18,7 +18,8 @@
 
 struct TG_texture
 {
-} typedef TG_sprite;
+	GLuint to;
+} typedef TG_texture;
 
 struct TG_object
 {
@@ -59,8 +60,11 @@ TG_object* TG_new_object(
 	float pos_y);
 void TG_render_object(const TG_object *object);
 void TG_destroy_object(TG_object *object);
+void TG_use_texture_object(TG_object *object, TG_texture *texture);
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
+
+TG_texture* TG_new_texture(_Bool nearest);
 
 
 

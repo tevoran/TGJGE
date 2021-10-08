@@ -1,9 +1,12 @@
 #version 330
 
 layout(location = 0) in vec2 aPos;
+layout(location = 1) in vec2 aTex;
 
 uniform vec2 aScale;
 uniform vec2 aTranslation;
+
+out vec2 tex_coords;
 
 void main()
 {
@@ -19,4 +22,7 @@ void main()
 
 	//setting final position
 	gl_Position=vec4(Pos, 0.0, 1.0);
+
+	//sending information to the fragment shader
+	tex_coords=aTex;
 }

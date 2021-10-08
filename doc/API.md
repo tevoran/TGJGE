@@ -8,8 +8,9 @@ The engine is initialized by calling the function
 void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_toggle);
 ```
 
-
-You can set various parameters to let the created window fit your needs. But because of the _Bool you need to have a compiler that can compile C99. Although this shouldn't be an issue today anymore.
+You can set various parameters to let the created window fit your
+needs. But because of the _Bool you need to have a compiler that can
+compile C99. Although this shouldn't be an issue today anymore.
 
 
 ## Updating the window

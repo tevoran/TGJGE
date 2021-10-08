@@ -8,10 +8,10 @@ TG_object* TG_new_object(float size_x, float size_y, float pos_x, float pos_y)
 {
 	GLfloat quad_data[]=
 	{
-		0.0,0.0,
-		1.0,0.0,
-		0.0,1.0,
-		1.0,1.0,
+		0.0,0.0,	0.0,0.0,
+		1.0,0.0,	1.0,0.0,
+		0.0,1.0,	0.0,1.0,
+		1.0,1.0,	1.0,1.0,
 	};
 
 	GLuint quad_index[]=
@@ -40,8 +40,17 @@ TG_object* TG_new_object(float size_x, float size_y, float pos_x, float pos_y)
 			quad_index, 
 			GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat)*4, (void*)0);
 	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer(
+		1, 
+		2, 
+		GL_FLOAT, 
+		GL_FALSE, 
+		sizeof(GLfloat)*4, 
+		(void*)(2*sizeof(GLfloat)));
+	glEnableVertexAttribArray(1);
 
 	new_object->scale_x=size_x;
 	new_object->scale_y=size_y;
@@ -63,6 +72,7 @@ void TG_render_object(const TG_object *object)
 
 	glBindVertexArray(object->vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object->ibo);
+	glBindTexture(GL_TEXTURE_2D, object->to);
 
 	glDrawElements(GL_TRIANGLES, NUM_INDEX, GL_UNSIGNED_INT, NULL);
 }
@@ -85,4 +95,9 @@ void TG_set_position_object(TG_object *object, float pos_x, float pos_y)
 {
 	object->translation_x=pos_x;
 	object->translation_y=pos_y;
+}
+
+void TG_use_texture_object(TG_object *object, TG_texture *texture)
+{
+	object->to=texture->to;
 }
