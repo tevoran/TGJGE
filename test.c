@@ -10,12 +10,24 @@ int main()
 	TG_use_texture_object(object, texture);
 	TG_set_position_object(object, 0.5,0.5);
 
+	TG_texture *crate_tex=TG_new_texture("assets/crate.bmp", false);
+	TG_object *crate[10];
+	for(int i=0; i<10; i++)
+	{
+		crate[i]=TG_new_object(0.1,0.178,(float)i/10,0.322);
+		TG_use_texture_object(crate[i], crate_tex);
+	}
+
 	TG_render_object(object);
 
 	for(int i=0; i<1000; i++)
 	{
 		TG_set_position_object(object, 0.4*sin((float)i/50)+0.4, 0.5);
 		TG_render_object(object);
+		for(int i=0; i<10; i++)
+		{
+			TG_render_object(crate[i]);
+		}
 		TG_flip(0.1,0.0,0);
 	}
 
