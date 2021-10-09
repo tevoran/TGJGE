@@ -98,6 +98,9 @@ void TG_init(
 
 	//setting certain OpenGL values
 	glClearDepth(1.0f);
+	glDisable(GL_CULL_FACE);
+	glEnable(GL_BLEND); //give us transparency!
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//setting engine related stuff
 	TG_desired_frametime=1000/desired_framerate;
