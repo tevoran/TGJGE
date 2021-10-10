@@ -35,6 +35,7 @@ struct TG_object
 	float scale_y;
 	float translation_x;
 	float translation_y;
+	float rotation[2][2];
 
 } typedef TG_object;
 
@@ -64,6 +65,7 @@ void TG_destroy_object(TG_object *object);
 void TG_use_texture_object(TG_object *object, TG_texture *texture);
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
+void TG_rotate_object(TG_object *object, float radians);
 
 
 TG_texture* TG_new_texture(

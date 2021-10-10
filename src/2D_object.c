@@ -56,6 +56,10 @@ TG_object* TG_new_object(float size_x, float size_y, float pos_x, float pos_y)
 	new_object->scale_y=size_y;
 	new_object->translation_x=pos_x;
 	new_object->translation_y=pos_y;
+	new_object->rotation[0][0]=1.0;
+	new_object->rotation[0][1]=0.0;
+	new_object->rotation[1][0]=0.0;
+	new_object->rotation[1][1]=1.0;
 
 	//initializing values
 	new_object->to=0;
@@ -69,6 +73,12 @@ void TG_render_object(const TG_object *object)
 	glUniform2f(scale, object->scale_x, object->scale_y);
 	GLint translation=glGetUniformLocation(TG_shader_program, "aTranslation");
 	glUniform2f(translation, object->translation_x, object->translation_y);
+	GLint rotation=glGetUniformLocation(TG_shader_program, "aRot");
+	glUniformMatrix2fv(
+		rotation, 
+		1, 
+		GL_FALSE, 
+		(const GLfloat*)object->rotation);
 
 	glBindVertexArray(object->vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object->ibo);
@@ -95,6 +105,14 @@ void TG_set_position_object(TG_object *object, float pos_x, float pos_y)
 {
 	object->translation_x=pos_x;
 	object->translation_y=pos_y;
+}
+
+void TG_rotate_object(TG_object *object, float radians)
+{
+	object->rotation[0][0]=cos(radians);
+	object->rotation[0][1]=-sin(radians);
+	object->rotation[1][0]=sin(radians);
+	object->rotation[1][1]=cos(radians);
 }
 
 void TG_use_texture_object(TG_object *object, TG_texture *texture)
