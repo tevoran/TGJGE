@@ -9,8 +9,9 @@ void TG_init(const char *window_title, int res_x, int res_y, _Bool fullscreen_to
 ```
 
 You can set various parameters to let the created window fit your
-needs. But because of the _Bool you need to have a compiler that can
-compile C99. Although this shouldn't be an issue today anymore.
+needs. But because of the bool data type you need to have a compiler
+that can compile C99. Although this shouldn't be an issue today
+anymore.
 
 
 ## Updating the window
@@ -68,6 +69,19 @@ quads.
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 ```
+
+#### Rotation
+
+It is possible to rotate an object with the function TG_rotate_object.
+
+```c
+void TG_rotate_object(TG_object *object, float radians);
+```
+
+This function will rotate an object around its center in a clockwise
+manner. It is also important to note that the rotation angle is an
+absolute one and is given in radians. Therefore a full rotation equals
+2 * PI. 
 
 ### Textures/Sprites
 
