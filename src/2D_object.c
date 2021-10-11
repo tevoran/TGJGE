@@ -221,3 +221,8 @@ void TG_start_animation_object(
 	object->frame_end_timer=duration_ms;
 	TG_set_anim_frame(object);
 }
+
+void TG_stop_animation_object(TG_object *object)
+{
+	object->animation_toggle=false;
+}

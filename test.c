@@ -41,6 +41,11 @@ int main()
 		TG_render_object(object);
 		TG_render_object(anim_obj);
 		TG_flip(0.1,0.0,0);
+		if(i>300)
+		{
+			TG_stop_animation_object(anim_obj);
+		}
+
 	}
 
 

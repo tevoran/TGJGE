@@ -83,6 +83,8 @@ void TG_start_animation_object(
 	int start_frame, 
 	int end_frame, 
 	int duration_ms);
+void TG_stop_animation_object(TG_object *object);
+
 
 TG_texture* TG_new_texture(
 	const char *path, 
