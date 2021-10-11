@@ -80,6 +80,7 @@ TG_texture* TG_new_texture(
 	free(tex_data);
 	stbi_image_free(img_data);
 
+
 	return new_texture;
 }
 

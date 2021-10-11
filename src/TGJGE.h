@@ -25,6 +25,8 @@ struct TG_texture
 struct TG_object
 {
 	//renderer related stuff
+	GLfloat quad_data[4][4];
+
 	GLuint vao; //vertex array object
 	GLuint vbo; //vertex buffer object
 	GLuint ibo; //index buffer object
@@ -36,6 +38,15 @@ struct TG_object
 	float translation_x;
 	float translation_y;
 	float rotation[2][2];
+
+	//animation system
+	_Bool animation_toggle; //false indicates a non animated sprite
+	int num_frames; //total number of frames available
+	int default_frame;
+	int current_frame; //current frame of the current animation
+	int end_frame; //end frame of the current animation
+	int current_frame_timer; //timer in ms
+	int frame_end_timer; //timer in ms
 
 } typedef TG_object;
 
@@ -59,14 +70,19 @@ TG_object* TG_new_object(
 	float size_x,
 	float size_y,
 	float pos_x,
-	float pos_y);
-void TG_render_object(const TG_object *object);
+	float pos_y,
+	int num_frames);
+void TG_render_object(TG_object *object);
 void TG_destroy_object(TG_object *object);
 void TG_use_texture_object(TG_object *object, TG_texture *texture);
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 void TG_rotate_object(TG_object *object, float radians);
-
+void TG_start_animation_object(
+	TG_object *object,
+	int start_frame, 
+	int end_frame, 
+	int duration_ms);
 
 TG_texture* TG_new_texture(
 	const char *path, 
