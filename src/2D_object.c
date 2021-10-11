@@ -224,5 +224,7 @@ void TG_start_animation_object(
 
 void TG_stop_animation_object(TG_object *object)
 {
+	object->current_frame=object->default_frame;
+	TG_set_anim_frame(object);
 	object->animation_toggle=false;
 }

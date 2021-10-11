@@ -50,10 +50,29 @@ The basic structure of the usage of a TG_object object is to create,
 doing some stuff and destroy it.
 
 ```c
-TG_object* TG_new_object();
+TG_object* TG_new_object(
+	float size_x,
+	float size_y,
+	float pos_x,
+	float pos_y,
+	int num_frames);
 void TG_render_object(const TG_object *object);
 void TG_destroy_object(TG_object *object);
 ```
+
+During the object's creation it is necessary to give some information
+about it. The num_frames input is especially important if a sprite
+needs to be animated later on. If it's not animated then one can leave
+the value at 1.
+Animations are always stored in image files that store all the ani-
+mations in a horizontal strip. Therefore the num_frames input is used
+to divide the strip into displayable frames.
+
+The size and position are screen relative, i.e. a screen filling 
+sprite has the size (1.0f, 1.0f) and a sprite with a quarter of the
+screen's size is (0.5f, 0.5f). For the sprite's positioning it is
+important to note that the screen's origin is always the left bottom
+corner of the screen.
 
 ### Transformations
 
@@ -116,3 +135,27 @@ void TG_destroy_texture(TG_texture *texture);
 ```
 
 but this should only happen when the texture isn't used on any object anymore.
+
+### Animations
+
+To be able to use the animation system it is important to have an
+active texture that is used with an object. But once an object and a
+texture are connected it is easy to start an animation sequence with
+
+```c
+void TG_start_animation_object(
+	TG_object *object,
+	int start_frame, 
+	int end_frame, 
+	int duration_ms);
+```
+
+This function starts an animation sequence and uses the animation
+frame strip in the texture to get from the start frame to the end
+frame in the duration provided by the user.
+
+If it is necessary to stop an animation then there is the function
+
+```c
+void TG_stop_animation_object(TG_object *object);
+```
