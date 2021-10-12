@@ -41,8 +41,10 @@ struct TG_object
 
 	//animation system
 	_Bool animation_toggle; //false indicates a non animated sprite
+	_Bool loop_toggle; //false is a not looping animation
 	int num_frames; //total number of frames available
 	int default_frame;
+	int start_frame; //the start frame of the current animation
 	int current_frame; //current frame of the current animation
 	int end_frame; //end frame of the current animation
 	int current_frame_timer; //timer in ms
@@ -80,9 +82,10 @@ void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 void TG_rotate_object(TG_object *object, float radians);
 void TG_start_animation_object(
 	TG_object *object,
-	int start_frame, 
+	int start_frame,
 	int end_frame, 
-	int duration_ms);
+	int duration_ms,
+	_Bool loop);
 void TG_stop_animation_object(TG_object *object);
 
 

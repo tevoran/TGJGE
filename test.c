@@ -3,12 +3,7 @@
 
 int main()
 {
-	TG_init("test window", 1920, 1080, true, 60);
-	TG_flip(0.0,0.0,0.0);
-	TG_texture *texture=TG_new_texture("assets/Taube.png", false);
-	TG_object *object=TG_new_object(0.17, 0.3, 0.1, 0.5, 1);
-	TG_use_texture_object(object, texture);
-	TG_set_position_object(object, 0.5,0.5);
+	TG_init("test window", 1366, 768, false, 60);
 
 	TG_texture *crate_tex=TG_new_texture("assets/crate.bmp", false);
 	TG_object *crate[10];
@@ -19,38 +14,30 @@ int main()
 	}
 
 	//animation test
-	TG_texture *anim_tex=TG_new_texture("assets/anim.png", false);
-	TG_object *anim_obj=TG_new_object(0.17, 0.3, 0.4, 0.1, 2);
-	TG_use_texture_object(anim_obj, anim_tex);
+	TG_texture *fire_tex=TG_new_texture("assets/flame.png", false);
+	TG_object *fire_obj=TG_new_object(0.058, 0.1, 0.1, 0.5, 3);
+	TG_object *fire_obj2=TG_new_object(0.058, 0.1, 0.85, 0.5, 3);
+	TG_use_texture_object(fire_obj, fire_tex);
+	TG_use_texture_object(fire_obj2, fire_tex);
 
-	TG_render_object(object);
+	TG_start_animation_object(fire_obj, 1, 3, 500, true);
+	TG_start_animation_object(fire_obj2, 1, 3, 500, true);
 
-	float rot=0;
-
-	TG_start_animation_object(anim_obj, 1, 2, 500);
-
-	for(int i=0; i<600; i++)
+	for(int i=0; i<6000; i++)
 	{
-		TG_set_position_object(object, 0.4*sin((float)i/50)+0.4, 0.5);
-		TG_rotate_object(object, rot);
-			rot+=0.04;
 		for(int i=0; i<10; i++)
 		{
 			TG_render_object(crate[i]);
 		}
-		TG_render_object(object);
-		TG_render_object(anim_obj);
+		TG_render_object(fire_obj);
+		TG_render_object(fire_obj2);
 		TG_flip(0.1,0.0,0);
-		if(i>300)
-		{
-			TG_stop_animation_object(anim_obj);
-		}
-
 	}
 
 
-	TG_destroy_texture(anim_tex);
-	TG_destroy_texture(texture);
-	TG_destroy_object(object);
+	TG_destroy_texture(fire_tex);
+	TG_destroy_texture(crate_tex);
+	TG_destroy_object(fire_obj);
+	TG_destroy_object(fire_obj2);
 	return 0;
 }

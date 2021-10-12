@@ -127,7 +127,9 @@ TG_object* TG_new_object(
 		new_object->animation_toggle=false;
 	}
 	new_object->num_frames=num_frames;
+	new_object->loop_toggle=false;
 	new_object->default_frame=1;
+	new_object->start_frame=1;
 	new_object->current_frame=1;
 	new_object->end_frame=1; //end frame of the current animation
 	new_object->current_frame_timer=0; //ms
@@ -160,6 +162,7 @@ void TG_render_object(TG_object *object)
 			object->current_frame++;
 			if(object->current_frame > object->end_frame)
 			{
+				object->animation_toggle=object->loop_toggle;
 				object->current_frame=object->default_frame;
 			}
 
@@ -212,9 +215,11 @@ void TG_start_animation_object(
 	TG_object *object,
 	int start_frame, 
 	int end_frame, 
-	int duration_ms)
+	int duration_ms,
+	_Bool loop)
 {
 	object->animation_toggle=true;
+	object->loop_toggle=loop;
 	object->current_frame=start_frame;
 	object->end_frame=end_frame;
 	object->current_frame_timer=0;
