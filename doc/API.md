@@ -81,6 +81,16 @@ for the X-axis and the bottom side of the screen for the Y-axis;
 void TG_mouse_position(float *x, float *y);
 ```
 
+The second part are the buttons on the mouse. There are a few
+functions to get the state of certain buttons on the mouse.
+
+```c
+_Bool TG_mouse_is_left_pressed();
+_Bool TG_mouse_is_right_pressed();
+```
+
+They return true if the respective button is pressed and false if it
+isn't.
 
 ## Objects
 
