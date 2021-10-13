@@ -211,6 +211,8 @@ void TG_use_texture_object(TG_object *object, TG_texture *texture)
 	object->to=texture->to;
 }
 
+
+//animations
 void TG_start_animation_object(
 	TG_object *object,
 	int start_frame, 
@@ -232,4 +234,21 @@ void TG_stop_animation_object(TG_object *object)
 	object->current_frame=object->default_frame;
 	TG_set_anim_frame(object);
 	object->animation_toggle=false;
+}
+
+
+//collisions
+_Bool TG_is_colliding(TG_object *a, TG_object *b)
+{
+	_Bool collision=false;
+	if(
+		((a->translation_x + a->scale_x) > b->translation_x) &&
+		(a->translation_x < (b->translation_x + b->scale_x)) &&
+		((a->translation_y + a->scale_y) > b->translation_y) &&
+		(a->translation_y < (b->translation_y + b->scale_y))
+	)
+	{
+		collision=true;
+	}
+	return collision;
 }

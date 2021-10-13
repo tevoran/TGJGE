@@ -88,6 +88,7 @@ void TG_start_animation_object(
 	int duration_ms,
 	_Bool loop);
 void TG_stop_animation_object(TG_object *object);
+_Bool TG_is_colliding(TG_object *a, TG_object *b);
 
 
 TG_texture* TG_new_texture(
