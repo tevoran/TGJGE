@@ -177,3 +177,17 @@ If it is necessary to stop an animation then there is the function
 ```c
 void TG_stop_animation_object(TG_object *object);
 ```
+
+### Collision
+
+In games it is often necessary to detect the collision between two
+objects. Therefore TGJGE can detect if two objects overlap. In this
+case the two objects are treated as simple quads. This might be very
+accurate or not, depending on your used sprite.
+
+```c
+_Bool TG_is_colliding(TG_object *a, TG_object *b);
+```
+
+The function above is returns true if the two objects overlap and is
+false if they don't overlap.
