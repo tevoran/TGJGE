@@ -54,6 +54,22 @@ int TG_delta_time();
 float TG_delta_time_f();
 ```
 
+## Input
+
+### Keyboard
+
+Keyboard input can be read with a function called TG_is_key_pressed.
+It returns a false if this particular key is not currently pressed
+and true if it is pressed.
+
+As its input the function currently processes SDL2 Scancodes.
+A collection of all of them can be found here at
+https://wiki.libsdl.org/SDL_Scancode
+
+```c
+_Bool TG_is_key_pressed(unsigned char key);
+``` 
+
 ## Objects
 
 In TGJGE quads are used to render everything on the screen. They are
