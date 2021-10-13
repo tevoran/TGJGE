@@ -1,6 +1,9 @@
 #include "TGJGE.h"
 
 extern SDL_Window *TG_main_window;
+extern const Uint8 *TG_keyboard_state;
+extern SDL_Event TG_event;
+
 
 extern unsigned int TG_desired_frametime;
 extern unsigned int TG_last_frametime;
@@ -21,6 +24,12 @@ void TG_flip(float r, float g, float b)
         TG_delta_frametime=TG_current_frametime-TG_last_frametime;
     }
     //printf("frametime: %u ms\n", TG_delta_frametime);
+
+    //checking the keyboard state to get the latest input
+    while(SDL_PollEvent(&TG_event))
+    {
+    };
+    TG_keyboard_state=SDL_GetKeyboardState(NULL);
 
     //drawing
     SDL_GL_SwapWindow(TG_main_window);

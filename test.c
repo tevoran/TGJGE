@@ -23,14 +23,11 @@ int main()
 	TG_start_animation_object(fire_obj, 1, 3, 500, true);
 	TG_start_animation_object(fire_obj2, 1, 3, 500, true);
 
-	TG_set_position_object(crate[0], 0.0, 0.0);
-	TG_set_position_object(crate[1], 0.09, -0.13);
-
 	for(int i=0; i<180; i++)
 	{
-		if(TG_is_colliding(crate[0], crate[1]))
+		if(TG_is_key_pressed(SDL_SCANCODE_D))
 		{
-			printf("collision\n");
+			printf("D\n");
 		}
 		for(int i=0; i<10; i++)
 		{

@@ -96,6 +96,8 @@ TG_texture* TG_new_texture(
 	_Bool linear_interpolation_toggle);
 void TG_destroy_texture(TG_texture *texture);
 
+//input
+_Bool TG_is_key_pressed(unsigned char key);
 
 
 

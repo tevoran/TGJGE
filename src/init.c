@@ -4,6 +4,9 @@
 extern SDL_Window *TG_main_window;
 extern SDL_GLContext TG_gl_context; //SDL_GLContext is an alias for *void
 extern unsigned int TG_desired_frametime;
+extern const Uint8 *TG_keyboard_state;
+extern SDL_Event TG_event;
+
 
 void TG_init(
 	const char *window_title, 
@@ -105,4 +108,10 @@ void TG_init(
 	//setting engine related stuff
 	TG_desired_frametime=1000/desired_framerate;
 	printf("trying to keep a frame time of %u ms\n", TG_desired_frametime);
+
+	//setting an initial keyboard state
+	while(SDL_PollEvent(&TG_event))
+	{
+	};
+	TG_keyboard_state=SDL_GetKeyboardState(NULL);
 }
