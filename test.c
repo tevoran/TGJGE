@@ -3,7 +3,7 @@
 
 int main()
 {
-	TG_init("test window", 1366, 768, false, 60);
+	TG_init("test window", 1920, 1080, true, 60);
 
 	TG_texture *crate_tex=TG_new_texture("assets/crate.bmp", false);
 	TG_object *crate[10];
@@ -23,6 +23,11 @@ int main()
 	TG_start_animation_object(fire_obj, 1, 3, 500, true);
 	TG_start_animation_object(fire_obj2, 1, 3, 500, true);
 
+	float x=0,y=0;
+	TG_object *mouse=TG_new_object(0.058, 0.1, x, y, 3);
+	TG_use_texture_object(mouse, fire_tex);
+	TG_start_animation_object(mouse, 1, 3, 500, true);
+
 	while(!TG_is_key_pressed(SDL_SCANCODE_ESCAPE))
 	{
 		if(TG_mouse_is_left_pressed())
@@ -33,12 +38,15 @@ int main()
 		{
 			printf("right\n");
 		}
+		TG_mouse_position(&x, &y);
+		TG_set_position_object(mouse, x, y);
 		for(int i=0; i<10; i++)
 		{
 			TG_render_object(crate[i]);
 		}
 		TG_render_object(fire_obj);
 		TG_render_object(fire_obj2);
+		TG_render_object(mouse);
 		TG_flip(0.1,0.0,0);
 	}
 
