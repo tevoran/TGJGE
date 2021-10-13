@@ -4,6 +4,8 @@ extern const Uint8 *TG_keyboard_state;
 extern int TG_res_x;
 extern int TG_res_y;
 
+Uint32 TG_mouse_button_state;
+
 //currently the SDL Keyboard Scancodes are used
 _Bool TG_is_key_pressed(unsigned char key)
 {
@@ -18,4 +20,16 @@ void TG_mouse_position(float *x, float *y)
 
 	*x=(float)tmp_x/(float)TG_res_x;
 	*y=1.0 - ((float)tmp_y/(float)TG_res_y);
+}
+
+_Bool TG_mouse_is_left_pressed()
+{
+	TG_mouse_button_state=SDL_GetMouseState(NULL, NULL);
+	return (SDL_BUTTON(SDL_BUTTON_LEFT) & TG_mouse_button_state);
+}
+
+_Bool TG_mouse_is_right_pressed()
+{
+	TG_mouse_button_state=SDL_GetMouseState(NULL, NULL);
+	return (SDL_BUTTON(SDL_BUTTON_RIGHT) & TG_mouse_button_state);
 }

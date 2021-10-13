@@ -25,12 +25,13 @@ int main()
 
 	while(!TG_is_key_pressed(SDL_SCANCODE_ESCAPE))
 	{
-		float m_x, m_y;
-		TG_mouse_position(&m_x, &m_y);
-		printf("mouse at %f x %f\n", m_x, m_y);
-		if(TG_is_key_pressed(SDL_SCANCODE_D))
+		if(TG_mouse_is_left_pressed())
 		{
-			printf("D\n");
+			printf("left\n");
+		}
+		if(TG_mouse_is_right_pressed())
+		{
+			printf("right\n");
 		}
 		for(int i=0; i<10; i++)
 		{
