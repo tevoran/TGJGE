@@ -13,6 +13,19 @@ needs. But because of the bool data type you need to have a compiler
 that can compile C99. Although this shouldn't be an issue today
 anymore.
 
+## Quitting the engine
+
+The engine can be quitted by calling the TG_quit
+function.
+
+```c
+void TG_quit();
+```
+
+It will end SDL and the related OpenGL stuff. But it
+is still necessary to destroy all objects and
+textures on your own if you want to have a clean end
+of execution.
 
 ## Updating the window
 

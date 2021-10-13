@@ -23,7 +23,7 @@ int main()
 	TG_start_animation_object(fire_obj, 1, 3, 500, true);
 	TG_start_animation_object(fire_obj2, 1, 3, 500, true);
 
-	for(int i=0; i<6000; i++)
+	for(int i=0; i<600; i++)
 	{
 		for(int i=0; i<10; i++)
 		{
@@ -39,5 +39,6 @@ int main()
 	TG_destroy_texture(crate_tex);
 	TG_destroy_object(fire_obj);
 	TG_destroy_object(fire_obj2);
+	TG_quit();
 	return 0;
 }

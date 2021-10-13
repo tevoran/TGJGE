@@ -61,6 +61,7 @@ void TG_init(
 	int res_y, 
 	_Bool fullscreen_toggle,
 	float desired_framerate);
+void TG_quit();
 
 	//swaps the framebuffer and takes in the clear color as a parameter
 void TG_flip(float r, float g, float b); 
