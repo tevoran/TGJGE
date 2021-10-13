@@ -23,8 +23,11 @@ int main()
 	TG_start_animation_object(fire_obj, 1, 3, 500, true);
 	TG_start_animation_object(fire_obj2, 1, 3, 500, true);
 
-	for(int i=0; i<180; i++)
+	while(!TG_is_key_pressed(SDL_SCANCODE_ESCAPE))
 	{
+		float m_x, m_y;
+		TG_mouse_position(&m_x, &m_y);
+		printf("mouse at %f x %f\n", m_x, m_y);
 		if(TG_is_key_pressed(SDL_SCANCODE_D))
 		{
 			printf("D\n");

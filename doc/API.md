@@ -70,6 +70,18 @@ https://wiki.libsdl.org/SDL_Scancode
 _Bool TG_is_key_pressed(unsigned char key);
 ``` 
 
+### Mouse
+
+The mouse input is split into two parts. The first one is the position
+of the mouse cursor on the screen. This is described by two floats
+with values between 0.0f and 1.0f. 0.0f is the left side of the screen
+for the X-axis and the bottom side of the screen for the Y-axis;
+
+```c
+void TG_mouse_position(float *x, float *y);
+```
+
+
 ## Objects
 
 In TGJGE quads are used to render everything on the screen. They are

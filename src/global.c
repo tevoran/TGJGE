@@ -16,3 +16,6 @@ unsigned int TG_desired_frametime=0;
 unsigned int TG_last_frametime=0;
 unsigned int TG_current_frametime=0;
 unsigned int TG_delta_frametime=0;
+
+int TG_res_x;
+int TG_res_y;

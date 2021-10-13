@@ -7,6 +7,8 @@ extern unsigned int TG_desired_frametime;
 extern const Uint8 *TG_keyboard_state;
 extern SDL_Event TG_event;
 
+extern int TG_res_x;
+extern int TG_res_y;
 
 void TG_init(
 	const char *window_title, 
@@ -16,6 +18,8 @@ void TG_init(
 	float desired_framerate)
 {
 	printf("starting TGJGE\n");
+	TG_res_x=res_x;
+	TG_res_y=res_y;
 
 	printf("starting SDL2...");
 		SDL_Init(

@@ -98,6 +98,7 @@ void TG_destroy_texture(TG_texture *texture);
 
 //input
 _Bool TG_is_key_pressed(unsigned char key);
+void TG_mouse_position(float *x, float *y);
 
 
 
