@@ -18,6 +18,13 @@ engine with a C99 compiler.
 I try to make the compilation as portable as possible. This is why I try to avoid subdirectories
 in the src directory. This way you need less work to configure your compiler.
 
+To get the current version of the repo just use the following two
+git commands.
+
+```
+git@github.com:tevoran/TGJGE.git
+git submodule update --init --recursive
+```
 #### Linux
 
 For Linux I have prepared a handy little makefile.
