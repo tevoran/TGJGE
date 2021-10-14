@@ -27,7 +27,7 @@ void TG_load_shader(const int shader_type, const char *shader_location)
 	}
 
 	//loading actual shader from file
-	shader_file=fopen(shader_location, "r");
+	shader_file=fopen(shader_location, "rb");
 	if(shader_file==NULL)
 	{
 		printf("\nERROR while loading the file at %s", shader_location);

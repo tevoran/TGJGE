@@ -13,9 +13,8 @@
 
 //necessary additional libraries
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <GL/glew.h>
-
-
 
 struct TG_texture
 {
@@ -51,6 +50,18 @@ struct TG_object
 	int frame_end_timer; //timer in ms
 
 } typedef TG_object;
+
+struct TG_font
+{
+	TTF_Font *font;
+} typedef TG_font;
+
+struct TG_text
+{
+	TG_font *font;
+	TG_object *object;
+	TG_texture *texture;
+} typedef TG_text;
 
 #include "TGJGE_internal.h"
 
@@ -90,18 +101,33 @@ void TG_start_animation_object(
 void TG_stop_animation_object(TG_object *object);
 _Bool TG_is_colliding(TG_object *a, TG_object *b);
 
-
+//textures
 TG_texture* TG_new_texture(
 	const char *path, 
 	_Bool linear_interpolation_toggle);
 void TG_destroy_texture(TG_texture *texture);
+
+//text
+TG_font* TG_new_font(const char *path, unsigned int font_size_pt);
+void TG_destroy_font(TG_font *font);
+TG_text* TG_new_text(
+	TG_font *font, 
+	const char *text, 
+	float size_x, 
+	float size_y, 
+	float pos_x, 
+	float pos_y,
+	float color_r,
+	float color_g,
+	float color_b);
+void TG_render_text(TG_text *text);
+void TG_destroy_text(TG_text *text);
 
 //input
 _Bool TG_is_key_pressed(unsigned char key);
 void TG_mouse_position(float *x, float *y);
 _Bool TG_mouse_is_left_pressed();
 _Bool TG_mouse_is_right_pressed();
-
 
 
 

@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-o test -g
-LIBS=-lSDL2 -lGL -lGLEW -lm
+LIBS=-lSDL2 -lSDL2_ttf -lGL -lGLEW -lm 
 HEADERS=-I src/ -I vendor/stb/
 SRC=*.c src/*.c
 

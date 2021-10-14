@@ -229,3 +229,4 @@ _Bool TG_is_colliding(TG_object *a, TG_object *b);
 
 The function above is returns true if the two objects overlap and is
 false if they don't overlap.
+

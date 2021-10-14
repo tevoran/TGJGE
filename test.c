@@ -5,6 +5,18 @@ int main()
 {
 	TG_init("test window", 1920, 1080, true, 60);
 
+	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
+	TG_text *text=TG_new_text(
+		font, 
+		"TGJGE", 
+		1.0, 
+		1.0, 
+		0.0, 
+		0.0,
+		0.6,
+		0.5,
+		0.01);
+
 	TG_texture *crate_tex=TG_new_texture("assets/crate.bmp", false);
 	TG_object *crate[10];
 	for(int i=0; i<10; i++)
@@ -30,14 +42,6 @@ int main()
 
 	while(!TG_is_key_pressed(SDL_SCANCODE_ESCAPE))
 	{
-		if(TG_mouse_is_left_pressed())
-		{
-			printf("left\n");
-		}
-		if(TG_mouse_is_right_pressed())
-		{
-			printf("right\n");
-		}
 		TG_mouse_position(&x, &y);
 		TG_set_position_object(mouse, x, y);
 		for(int i=0; i<10; i++)
@@ -47,10 +51,11 @@ int main()
 		TG_render_object(fire_obj);
 		TG_render_object(fire_obj2);
 		TG_render_object(mouse);
+		TG_render_text(text);
 		TG_flip(0.1,0.0,0);
 	}
 
-
+	TG_destroy_font(font);
 	TG_destroy_texture(fire_tex);
 	TG_destroy_texture(crate_tex);
 	TG_destroy_object(fire_obj);

@@ -29,6 +29,15 @@ void TG_init(
 			SDL_INIT_EVENTS);
 	printf("done\n");
 
+	printf("starting SDL2_ttf...");
+		if (TTF_Init()!=0) {
+		    printf("ERROR\n");
+		}
+		else
+		{
+			printf("done\n");
+		}
+
 	printf("creating window...");
 		if(fullscreen_toggle==true)
 		{
