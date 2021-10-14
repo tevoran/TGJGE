@@ -230,3 +230,57 @@ _Bool TG_is_colliding(TG_object *a, TG_object *b);
 The function above is returns true if the two objects overlap and is
 false if they don't overlap.
 
+## Text
+
+If text needs to be rendered on the screen then you will need a
+TG_text object and a TG_font object.
+
+The font acts in a similar way like a texture acts to a 2D object in
+TGJGE.
+
+### Font
+
+A TG_font needs to be loaded from a file. Supported file types are TTF
+and FON.
+
+```c
+TG_font* TG_new_font(const char *path, unsigned int font_size_pt);
+```
+
+It creates a font with a specific size. It can be streached and so on
+but it will determine how pixelated the text will look. So if you need
+different point sizes then you need to create different fonts.
+
+At the of the game's runtime it is advised to destroy all the used
+fonts.
+
+```c
+void TG_destroy_font(TG_font *font);
+```
+
+### Text objects
+
+Once a font is created, it can be used to generate a TG_text object.
+This kind of object contains all the data that is necessary to display
+a given text.
+
+```c
+TG_text* TG_new_text(
+	TG_font *font, 
+	const char *text, 
+	float size_x, 
+	float size_y, 
+	float pos_x, 
+	float pos_y,
+	float color_r,
+	float color_g,
+	float color_b);
+```
+
+The color values are also between 0.0f and 1.0f. So a text with the
+color 0.0f, 0.0f, 0.0f will be black.
+
+```c
+void TG_render_text(TG_text *text);
+void TG_destroy_text(TG_text *text);
+```
