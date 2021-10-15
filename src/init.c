@@ -113,7 +113,6 @@ void TG_init(
 	TG_load_shader(TG_FRAGMENT, "shaders/fragment.glsl");
 
 	//setting certain OpenGL values
-	glClearDepth(1.0f);
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND); //give us transparency!
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);

@@ -223,6 +223,7 @@ void TG_start_animation_object(
 	object->animation_toggle=true;
 	object->loop_toggle=loop;
 	object->current_frame=start_frame;
+	object->default_frame=start_frame;
 	object->end_frame=end_frame;
 	object->current_frame_timer=0;
 	object->frame_end_timer=duration_ms;
