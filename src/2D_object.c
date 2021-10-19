@@ -173,7 +173,14 @@ void TG_render_object(TG_object *object)
 
 	glBindVertexArray(object->vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object->ibo);
-	glBindTexture(GL_TEXTURE_2D, object->to);
+	if(glIsTexture(object->to))
+	{
+		glBindTexture(GL_TEXTURE_2D, object->to);
+	}
+	else
+	{
+		printf("ERROR: an invalid texture detected\n");
+	}
 
 	glDrawElements(GL_TRIANGLES, NUM_INDEX, GL_UNSIGNED_INT, NULL);
 }
