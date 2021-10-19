@@ -55,11 +55,21 @@ TG_text* TG_new_text(
 	};
 
 	SDL_Surface *text_surface=TTF_RenderUTF8_Solid(font->font, text, color);
-	
+	if(text_surface==NULL)
+	{
+		printf("ERROR: text couldn't be rendered into a texture\n");
+		printf("SDL2_ttf error message:\n%s\n", TTF_GetError());
+	}
+
 	//convert to RGBA format
 	const SDL_PixelFormat *format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32);
 	SDL_Surface *text_surface_rgba_u8=
 		SDL_ConvertSurface(text_surface, format, 0);
+	if(text_surface_rgba_u8==NULL)
+	{
+		printf("ERROR: text surface couldn't be converted into RGBA\n");
+		printf("SDL2 error message:\n%s\n", SDL_GetError());		
+	}
 	SDL_FreeSurface(text_surface);
 
 	//flipping texture
