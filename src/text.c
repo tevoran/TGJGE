@@ -63,6 +63,12 @@ TG_text* TG_new_text(
 
 	//convert to RGBA format
 	const SDL_PixelFormat *format = SDL_AllocFormat(SDL_PIXELFORMAT_RGBA32);
+	if(format==NULL)
+	{
+		printf("ERROR: color format couldn't be allocated RGBA\n");
+		printf("SDL2 error message:\n%s\n", SDL_GetError());	
+	}
+
 	SDL_Surface *text_surface_rgba_u8=
 		SDL_ConvertSurface(text_surface, format, 0);
 	if(text_surface_rgba_u8==NULL)
@@ -73,7 +79,7 @@ TG_text* TG_new_text(
 	SDL_FreeSurface(text_surface);
 
 	//flipping texture
-	unsigned char *flipped_text=malloc(text_surface_rgba_u8->w*text_surface->h*4);
+	unsigned char *flipped_text=malloc(text_surface_rgba_u8->w*text_surface_rgba_u8->h*4);
 	unsigned char *rgba_text=text_surface_rgba_u8->pixels;
 
 	unsigned int n1=0;
