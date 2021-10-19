@@ -116,6 +116,7 @@ void TG_init(
 	glDisable(GL_CULL_FACE);
 	glEnable(GL_BLEND); //give us transparency!
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glDisable(GL_DEPTH_TEST); //as we are in 2D, we don't need it
 
 	//setting engine related stuff
 	TG_desired_frametime=1000/desired_framerate;
