@@ -8,8 +8,7 @@ It simply stands for T3V's Game Jam Game Engine.
 The engine is written in C with OpenGL3.3 to get the biggest compatibility possible. This way
 it is easily usable in C and C++.
 
-You are free to use/modify/distribute the engine for your games or projects. But please act
-accordingly to the GPLv3 license which you can read in this repository.
+You are free to use/modify/distribute the engine for your games or projects.
 
 ## Dependencies
 
