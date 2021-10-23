@@ -132,6 +132,9 @@ _Bool TG_mouse_is_right_pressed();
 
 
 
+#ifdef __MINGW32__
+	#undef main
+#endif
 
 #endif
 
