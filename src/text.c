@@ -138,7 +138,7 @@ TG_text* TG_new_text(
 		GL_UNSIGNED_BYTE, 
 		flipped_text);
 	
-	TG_use_texture_object(text_out->object, text_out->texture);
+	TG_object_use_texture(text_out->object, text_out->texture);
 
 	SDL_FreeSurface(text_surface_rgba_u8);
 	free(flipped_text);

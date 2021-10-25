@@ -178,7 +178,7 @@ the time of drawing then the object will most likely not be rendered although
 the exact behaviour depends on the local OpenGL implementation.
 
 ```c
-void TG_use_texture_object(TG_object *object, TG_texture *texture);
+void TG_object_use_texture(TG_object *object, TG_texture *texture);
 ```
 
 After the texture is not used anymore then it should be destroyed by calling
@@ -196,7 +196,7 @@ active texture that is used with an object. But once an object and a
 texture are connected it is easy to start an animation sequence with
 
 ```c
-void TG_start_animation_object(
+void TG_object_start_animation(
 	TG_object *object,
 	int start_frame, 
 	int end_frame, 
@@ -215,7 +215,7 @@ will be executed only once.
 If it is necessary to stop an animation then there is the function
 
 ```c
-void TG_stop_animation_object(TG_object *object);
+void TG_object_stop_animation(TG_object *object);
 ```
 
 ### Collision

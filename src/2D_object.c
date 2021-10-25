@@ -192,14 +192,14 @@ void TG_rotate_object(TG_object *object, float radians)
 	object->rotation[1][1]=cos(radians);
 }
 
-void TG_use_texture_object(TG_object *object, TG_texture *texture)
+void TG_object_use_texture(TG_object *object, TG_texture *texture)
 {
 	object->used_texture=*texture;
 }
 
 
 //animations
-void TG_start_animation_object(
+void TG_object_start_animation(
 	TG_object *object,
 	int start_frame, 
 	int end_frame, 
@@ -216,7 +216,7 @@ void TG_start_animation_object(
 	TG_set_anim_frame(object);
 }
 
-void TG_stop_animation_object(TG_object *object)
+void TG_object_stop_animation(TG_object *object)
 {
 	object->used_texture.current_frame=object->used_texture.default_frame;
 	TG_set_anim_frame(object);

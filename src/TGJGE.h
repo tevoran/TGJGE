@@ -89,17 +89,17 @@ TG_object* TG_new_object(
 	float pos_y);
 void TG_render_object(TG_object *object);
 void TG_destroy_object(TG_object *object);
-void TG_use_texture_object(TG_object *object, TG_texture *texture);
+void TG_object_use_texture(TG_object *object, TG_texture *texture);
 void TG_resize_object(TG_object *object, float size_x, float size_y);
 void TG_set_position_object(TG_object *object, float pos_x, float pos_y);
 void TG_rotate_object(TG_object *object, float radians);
-void TG_start_animation_object(
+void TG_object_start_animation(
 	TG_object *object,
 	int start_frame,
 	int end_frame, 
 	int duration_ms,
 	_Bool loop);
-void TG_stop_animation_object(TG_object *object);
+void TG_object_stop_animation(TG_object *object);
 _Bool TG_is_colliding(TG_object *a, TG_object *b);
 
 //textures
