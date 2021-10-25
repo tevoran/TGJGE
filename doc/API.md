@@ -105,19 +105,13 @@ TG_object* TG_new_object(
 	float size_x,
 	float size_y,
 	float pos_x,
-	float pos_y,
-	int num_frames);
+	float pos_y);
 void TG_render_object(const TG_object *object);
 void TG_destroy_object(TG_object *object);
 ```
 
 During the object's creation it is necessary to give some information
-about it. The num_frames input is especially important if a sprite
-needs to be animated later on. If it's not animated then one can leave
-the value at 1.
-Animations are always stored in image files that store all the ani-
-mations in a horizontal strip. Therefore the num_frames input is used
-to divide the strip into displayable frames.
+about it.
 
 The size and position are screen relative, i.e. a screen filling 
 sprite has the size (1.0f, 1.0f) and a sprite with a quarter of the
@@ -159,6 +153,13 @@ Textures can be loaded from images in the following formats JPEG, PNG, BMP,
 GIF, PSD, HDR, PIC and PNM. The textures can be attached to TG_objects and
 will be displayed with them and turn them effectively into sprites.
 
+The num_frames input is especially important if a sprite
+needs to be animated later on. If it's not animated then one can leave
+the value at 1.
+Animations are always stored in image files that store all the ani-
+mations in a horizontal strip. Therefore the num_frames input is used
+to divide the strip into displayable frames.
+
 TG_new_texture is used to create a new texture from a file located in path.
 An interesting feature is the linear interpolation toggle. If it's false then
 the texels are clearly visible with sharp borders while it's completely differen
@@ -167,7 +168,8 @@ with very loosely visible borders.
 
 ```c
 TG_texture* TG_new_texture(
-	const char *path, 
+	const char *path,
+	int num_frames,
 	_Bool linear_interpolation_toggle);
 ```
 
