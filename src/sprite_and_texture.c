@@ -4,7 +4,8 @@
 #include <stb_image.h>
 
 TG_texture* TG_new_texture(
-	const char *path, 
+	const char *path,
+	int num_frames,
 	_Bool linear_interpolation_toggle)
 {
 	TG_texture *new_texture=malloc(sizeof(TG_texture));
@@ -80,6 +81,23 @@ TG_texture* TG_new_texture(
 	free(tex_data);
 	stbi_image_free(img_data);
 
+	//animation default setup
+	if(num_frames>1)
+	{
+		new_texture->animation_toggle=true;		
+	}
+	else
+	{
+		new_texture->animation_toggle=false;
+	}
+	new_texture->num_frames=num_frames;
+	new_texture->loop_toggle=false;
+	new_texture->default_frame=1;
+	new_texture->start_frame=1;
+	new_texture->current_frame=1;
+	new_texture->end_frame=1; //end frame of the current animation
+	new_texture->current_frame_timer=0; //ms
+	new_texture->frame_end_timer=0; //ms
 
 	return new_texture;
 }

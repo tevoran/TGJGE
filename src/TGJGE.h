@@ -19,24 +19,6 @@
 struct TG_texture
 {
 	GLuint to;
-} typedef TG_texture;
-
-struct TG_object
-{
-	//renderer related stuff
-	GLfloat quad_data[4][4];
-
-	GLuint vao; //vertex array object
-	GLuint vbo; //vertex buffer object
-	GLuint ibo; //index buffer object
-	GLuint to; //texture object
-
-	//transformations
-	float scale_x;
-	float scale_y;
-	float translation_x;
-	float translation_y;
-	float rotation[2][2];
 
 	//animation system
 	_Bool animation_toggle; //false indicates a non animated sprite
@@ -48,6 +30,25 @@ struct TG_object
 	int end_frame; //end frame of the current animation
 	int current_frame_timer; //timer in ms
 	int frame_end_timer; //timer in ms
+
+} typedef TG_texture;
+
+struct TG_object
+{
+	//renderer related stuff
+	GLfloat quad_data[4][4];
+
+	GLuint vao; //vertex array object
+	GLuint vbo; //vertex buffer object
+	GLuint ibo; //index buffer object
+	TG_texture used_texture; //texture object
+
+	//transformations
+	float scale_x;
+	float scale_y;
+	float translation_x;
+	float translation_y;
+	float rotation[2][2];
 
 } typedef TG_object;
 
@@ -84,8 +85,7 @@ TG_object* TG_new_object(
 	float size_x,
 	float size_y,
 	float pos_x,
-	float pos_y,
-	int num_frames);
+	float pos_y);
 void TG_render_object(TG_object *object);
 void TG_destroy_object(TG_object *object);
 void TG_use_texture_object(TG_object *object, TG_texture *texture);
@@ -103,7 +103,8 @@ _Bool TG_is_colliding(TG_object *a, TG_object *b);
 
 //textures
 TG_texture* TG_new_texture(
-	const char *path, 
+	const char *path,
+	int num_frames,
 	_Bool linear_interpolation_toggle);
 void TG_destroy_texture(TG_texture *texture);
 

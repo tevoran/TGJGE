@@ -10,16 +10,16 @@ void TG_set_anim_frame(TG_object *object)
 {
 	//set new texture coordinates
 	object->quad_data[0][2]=
-		((GLfloat)object->current_frame-1.0) / (GLfloat)object->num_frames;
+		((GLfloat)object->used_texture.current_frame-1.0) / (GLfloat)object->used_texture.num_frames;
 
 	object->quad_data[1][2]=
-		((GLfloat)object->current_frame) / (GLfloat)object->num_frames;
+		((GLfloat)object->used_texture.current_frame) / (GLfloat)object->used_texture.num_frames;
 
 	object->quad_data[2][2]=
-		((GLfloat)object->current_frame-1.0) / (GLfloat)object->num_frames;
+		((GLfloat)object->used_texture.current_frame-1.0) / (GLfloat)object->used_texture.num_frames;
 
 	object->quad_data[3][2]=
-		((GLfloat)object->current_frame) / (GLfloat)object->num_frames;
+		((GLfloat)object->used_texture.current_frame) / (GLfloat)object->used_texture.num_frames;
 
 	glBindVertexArray(object->vao);
 	glBindBuffer(GL_ARRAY_BUFFER, object->vbo);
@@ -35,8 +35,7 @@ TG_object* TG_new_object(
 	float size_x,
 	float size_y, 
 	float pos_x, 
-	float pos_y,
-	int num_frames)
+	float pos_y)
 {
 
 	GLuint quad_index[]=
@@ -114,26 +113,6 @@ TG_object* TG_new_object(
 	new_object->rotation[1][0]=0.0;
 	new_object->rotation[1][1]=1.0;
 
-	//texture
-	new_object->to=0;
-
-	//animation default setup
-	if(num_frames>1)
-	{
-		new_object->animation_toggle=true;		
-	}
-	else
-	{
-		new_object->animation_toggle=false;
-	}
-	new_object->num_frames=num_frames;
-	new_object->loop_toggle=false;
-	new_object->default_frame=1;
-	new_object->start_frame=1;
-	new_object->current_frame=1;
-	new_object->end_frame=1; //end frame of the current animation
-	new_object->current_frame_timer=0; //ms
-	new_object->frame_end_timer=0; //ms
 
 	return new_object;
 }
@@ -152,18 +131,18 @@ void TG_render_object(TG_object *object)
 		(const GLfloat*)object->rotation);
 
 	//if animation is set to running then set the current frame if necessary
-	if(object->animation_toggle)
+	if(object->used_texture.animation_toggle)
 	{
-		object->current_frame_timer+=TG_delta_time();
+		object->used_texture.current_frame_timer+=TG_delta_time();
 		//set new frame if old one is expired
-		if(object->current_frame_timer > object->frame_end_timer)
+		if(object->used_texture.current_frame_timer > object->used_texture.frame_end_timer)
 		{
-			object->current_frame_timer=0;
-			object->current_frame++;
-			if(object->current_frame > object->end_frame)
+			object->used_texture.current_frame_timer=0;
+			object->used_texture.current_frame++;
+			if(object->used_texture.current_frame > object->used_texture.end_frame)
 			{
-				object->animation_toggle=object->loop_toggle;
-				object->current_frame=object->default_frame;
+				object->used_texture.animation_toggle=object->used_texture.loop_toggle;
+				object->used_texture.current_frame=object->used_texture.default_frame;
 			}
 
 			//set new texture coordinates
@@ -173,9 +152,9 @@ void TG_render_object(TG_object *object)
 
 	glBindVertexArray(object->vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, object->ibo);
-	if(glIsTexture(object->to))
+	if(glIsTexture(object->used_texture.to))
 	{
-		glBindTexture(GL_TEXTURE_2D, object->to);
+		glBindTexture(GL_TEXTURE_2D, object->used_texture.to);
 	}
 	else
 	{
@@ -215,7 +194,7 @@ void TG_rotate_object(TG_object *object, float radians)
 
 void TG_use_texture_object(TG_object *object, TG_texture *texture)
 {
-	object->to=texture->to;
+	object->used_texture=*texture;
 }
 
 
@@ -227,21 +206,21 @@ void TG_start_animation_object(
 	int duration_ms,
 	_Bool loop)
 {
-	object->animation_toggle=true;
-	object->loop_toggle=loop;
-	object->current_frame=start_frame;
-	object->default_frame=start_frame;
-	object->end_frame=end_frame;
-	object->current_frame_timer=0;
-	object->frame_end_timer=duration_ms;
+	object->used_texture.animation_toggle=true;
+	object->used_texture.loop_toggle=loop;
+	object->used_texture.current_frame=start_frame;
+	object->used_texture.default_frame=start_frame;
+	object->used_texture.end_frame=end_frame;
+	object->used_texture.current_frame_timer=0;
+	object->used_texture.frame_end_timer=duration_ms;
 	TG_set_anim_frame(object);
 }
 
 void TG_stop_animation_object(TG_object *object)
 {
-	object->current_frame=object->default_frame;
+	object->used_texture.current_frame=object->used_texture.default_frame;
 	TG_set_anim_frame(object);
-	object->animation_toggle=false;
+	object->used_texture.animation_toggle=false;
 }
 
 

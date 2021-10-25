@@ -41,8 +41,7 @@ TG_text* TG_new_text(
 		size_x,
 		size_y,
 		pos_x,
-		pos_y,
-		1);
+		pos_y);
 
 	text_out->texture = malloc(sizeof(TG_texture));
 
