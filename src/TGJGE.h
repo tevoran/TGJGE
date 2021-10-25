@@ -10,6 +10,7 @@
 //necessary standard libraries
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 //necessary additional libraries
 #include <SDL2/SDL.h>
@@ -132,6 +133,9 @@ _Bool TG_mouse_is_right_pressed();
 
 
 
+#ifdef __MINGW32__
+	#undef main
+#endif
 
 #endif
 
