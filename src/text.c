@@ -43,7 +43,19 @@ TG_text* TG_new_text(
 		pos_x,
 		pos_y);
 
+	//make a custom texture
 	text_out->texture = malloc(sizeof(TG_texture));
+
+	//animation default setup
+	text_out->texture->animation_toggle=false;
+	text_out->texture->num_frames=1;
+	text_out->texture->loop_toggle=false;
+	text_out->texture->default_frame=1;
+	text_out->texture->start_frame=1;
+	text_out->texture->current_frame=1;
+	text_out->texture->end_frame=1; //end frame of the current animation
+	text_out->texture->current_frame_timer=0; //ms
+	text_out->texture->frame_end_timer=0; //ms
 
 	SDL_Color color=
 	{

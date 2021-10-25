@@ -38,7 +38,7 @@ int main()
 	float x=0,y=0;
 	TG_object *mouse=TG_new_object(0.058, 0.1, x, y);
 	TG_use_texture_object(mouse, fire_tex);
-	TG_start_animation_object(mouse, 1, 3, 50, true);
+	TG_start_animation_object(mouse, 1, 3, 350, true);
 
 	while(!TG_is_key_pressed(SDL_SCANCODE_ESCAPE))
 	{
