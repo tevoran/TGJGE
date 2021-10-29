@@ -223,7 +223,7 @@ frame strip in the texture to get from the start frame to the end
 frame in the duration provided by the user.
 
 The loop toggle is true for infinitely looping the animation until a
-TG_stop_animation_object() is getting called. If it's false then it
+TG_object_stop_animation() is getting called. If it's false then it
 will be executed only once.
 
 If it is necessary to stop an animation then there is the function
