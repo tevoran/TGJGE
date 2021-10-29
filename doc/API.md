@@ -92,6 +92,20 @@ _Bool TG_mouse_is_right_pressed();
 They return true if the respective button is pressed and false if it
 isn't.
 
+### Mouse Cursor
+
+As your OS or your window manager provides you with a default
+cursor, you may not want this cursor visible in your game. This is
+why there is a function to be able to disable the cursor and to
+enable it, if you wish to do so.
+
+```c
+	void TG_show_cursor(_Bool toggle);
+```
+
+Use true to enable the cursor or false to disable the cursor.
+
+
 ## Objects
 
 In TGJGE quads are used to render everything on the screen. They are

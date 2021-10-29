@@ -33,3 +33,15 @@ _Bool TG_mouse_is_right_pressed()
 	TG_mouse_button_state=SDL_GetMouseState(NULL, NULL);
 	return (SDL_BUTTON(SDL_BUTTON_RIGHT) & TG_mouse_button_state);
 }
+
+void TG_show_cursor(_Bool toggle)
+{
+	if(toggle)
+	{
+		SDL_ShowCursor(SDL_ENABLE);
+	}
+	else
+	{
+		SDL_ShowCursor(SDL_DISABLE);
+	}
+}

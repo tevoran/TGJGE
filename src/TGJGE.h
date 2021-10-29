@@ -130,6 +130,8 @@ _Bool TG_is_key_pressed(unsigned char key);
 void TG_mouse_position(float *x, float *y);
 _Bool TG_mouse_is_left_pressed();
 _Bool TG_mouse_is_right_pressed();
+	//true shows the cursor and false hides it
+void TG_show_cursor(_Bool toggle);
 
 
 
