@@ -45,7 +45,9 @@ void TG_load_shader(const int shader_type, const char *shader_location)
 
 	//getting source ready in memory
 	shader_buffer=malloc(shader_size+1);
-	shader_buffer[shader_size]=0; //add end of string for the shader compiler
+	//memset is apparently necessary because it's a solution that works
+	//with glibc and msvcrt
+	memset(shader_buffer, 0, shader_size+1);
 	fread(shader_buffer, shader_size, 1, shader_file);
 
 	//creating the shader for OpenGL

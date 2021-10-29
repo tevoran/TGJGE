@@ -5,8 +5,8 @@ project("TGJGE")
 #SET(CMAKE_CXX_FLAGS  "-m64 -Ofast -flto -march=native -funroll-loops")
 
 #DEBUGMODE
-SET(CMAKE_CXX_FLAGS "-g -ggdb -fsanitize=address")
-#SET(CMAKE_CXX_FLAGS "-g")
+#SET(CMAKE_CXX_FLAGS "-g -ggdb -fsanitize=address")
+SET(CMAKE_CXX_FLAGS "-g")
 
 #PROFILERMODE
 #SET(CMAKE_CXX_FLAGS "-g -pg")
