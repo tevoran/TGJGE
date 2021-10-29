@@ -19,3 +19,7 @@ unsigned int TG_delta_frametime=0;
 
 int TG_res_x;
 int TG_res_y;
+
+//desktop resolution
+int TG_desktop_res_x;
+int TG_desktop_res_y;

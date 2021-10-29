@@ -10,6 +10,10 @@ extern SDL_Event TG_event;
 extern int TG_res_x;
 extern int TG_res_y;
 
+//desktop resolution
+extern int TG_desktop_res_x;
+extern int TG_desktop_res_y;
+
 void TG_init(
 	const char *window_title, 
 	int res_x, 
@@ -28,6 +32,12 @@ void TG_init(
 			SDL_INIT_AUDIO |
 			SDL_INIT_EVENTS);
 	printf("done\n");
+
+	SDL_DisplayMode dm;
+	SDL_GetDesktopDisplayMode(0, &dm);
+	TG_desktop_res_x=dm.w;
+	TG_desktop_res_y=dm.h;
+		printf("native desktop resolution is %ix%i\n", dm.w, dm.h);
 
 	printf("starting SDL2_ttf...");
 		if (TTF_Init()!=0) {

@@ -3,7 +3,7 @@
 
 int main()
 {
-	TG_init("test window", 1920, 1080, false, 60);
+	TG_init("test window", 300, 800, true, 60);
 
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(
