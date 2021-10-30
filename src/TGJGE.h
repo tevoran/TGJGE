@@ -77,7 +77,7 @@ void TG_init(
 void TG_quit();
 
 	//swaps the framebuffer and takes in the clear color as a parameter
-void TG_flip(float r, float g, float b); 
+void TG_new_frame(float r, float g, float b); 
 int TG_delta_time();
 float TG_delta_time_f();
 

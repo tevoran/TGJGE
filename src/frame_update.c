@@ -11,7 +11,7 @@ extern unsigned int TG_current_frametime;
 extern unsigned int TG_delta_frametime;
 
 //takes in the clear color as a parameter
-void TG_flip(float r, float g, float b)
+void TG_new_frame(float r, float g, float b)
 {
     //setting up new frametime
     TG_last_frametime=TG_current_frametime;

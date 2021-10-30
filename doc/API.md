@@ -32,10 +32,10 @@ of execution.
 Once you drew everything into the framebuffer then you may wish to see your result. You can do this by calling
 
 ```c 
-void TG_flip(float r, float g, float b); 
+void TG_new_frame(float r, float g, float b); 
 ```
 
-The TG_flip function takes in three floats as parameters. They are used to set the background color of the screen.
+The TG_new_frame function takes in three floats as parameters. They are used to set the background color of the screen.
 
 This function also updates the timers for each frame. This enables the
 engine's user to get the current delta time.
