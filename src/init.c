@@ -49,14 +49,22 @@ void TG_init(
 		}
 
 	printf("starting SDL_mixer...");
+		int mix_init_flags=MIX_INIT_MP3;
+		if(Mix_Init(mix_init_flags)!=mix_init_flags)
+		{
+			printf("ERROR\n");
+			printf("SDL_mixer error message:\n%s\n", Mix_GetError());
+		}
+
 		if(Mix_OpenAudio(
-			MIX_DEFAULT_FREQUENCY,
+			44100,
 			MIX_DEFAULT_FORMAT,
 			2,
-			1024)
+			4096)
 			!=0)
 		{
 			printf("ERROR\n");
+			printf("SDL_mixer error message:\n%s\n", Mix_GetError());
 		}
 		else
 		{

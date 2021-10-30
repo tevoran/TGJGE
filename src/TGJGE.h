@@ -135,7 +135,8 @@ _Bool TG_mouse_is_right_pressed();
 	//true shows the cursor and false hides it
 void TG_show_cursor(_Bool toggle);
 
-
+//audio
+void test_audio();
 
 #ifdef __MINGW32__
 	#undef main

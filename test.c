@@ -3,10 +3,11 @@
 
 int main()
 {
-	TG_init("test window", 1920, 1080, false, 60);
+	TG_init("test window", 1366, 768, false, 60);
 
 	TG_show_cursor(false);
-	TG_show_cursor(true);
+
+	test_audio();
 
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(
