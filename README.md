@@ -22,8 +22,8 @@ git submodule update --init --recursive
 
 The game engine is designed to have light dependencies and a high
 portability across various platforms. Therefore you only need 
-SDL2, SDL2_ttf, GLEW and OpenGL3.3 available on your system to
-compile the engine with a C99 compiler.
+SDL2, SDL2_ttf, SDL2_mixer, GLEW and OpenGL3.3 available on your
+system to compile the engine with a C99 compiler.
 
 There are now different parts of the engine. There is a small and
 portable core in C, which is basically the engine with all the
@@ -37,9 +37,9 @@ by the engine core library.
 
 The compilation of the engine TGJGE in the src directory itself
 should be quite easy. Just configure your compiler to its
-dependencies (SDL2, SDL2_ttf, GLEW and OpenGL3.3) after the
-submodule initialization. Then you should be able to use the
-engine as a library.
+dependencies (SDL2, SDL2_ttf, SDL2_mixer, GLEW and OpenGL3.3)
+after the submodule initialization. Then you should be able to use 
+the engine as a library.
 Alternatively you can use CMake now as well.
 
 #### Linux

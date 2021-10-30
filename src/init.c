@@ -48,6 +48,21 @@ void TG_init(
 			printf("done\n");
 		}
 
+	printf("starting SDL_mixer...");
+		if(Mix_OpenAudio(
+			MIX_DEFAULT_FREQUENCY,
+			MIX_DEFAULT_FORMAT,
+			2,
+			1024)
+			!=0)
+		{
+			printf("ERROR\n");
+		}
+		else
+		{
+			printf("done\n");
+		}
+		
 	printf("creating window...");
 		if(fullscreen_toggle==true)
 		{
@@ -120,7 +135,7 @@ void TG_init(
 
 	//properly cleaning up the engine after an unexpected closure
 	atexit(TG_quit);
-	
+
 	//preparing shaders
 	TG_load_shader(TG_VERTEX, "shaders/vertex.glsl");
 	TG_load_shader(TG_FRAGMENT, "shaders/fragment.glsl");

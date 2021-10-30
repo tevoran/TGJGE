@@ -20,6 +20,10 @@ void TG_quit()
 	SDL_DestroyWindow(TG_main_window);
 		printf("done\n");
 
+		printf("qutting SDL_mixer...");
+	Mix_CloseAudio();
+		printf("done\n");
+
 		printf("quitting SDL2_ttf...");
 	TTF_Quit();
 		printf("done\n");
