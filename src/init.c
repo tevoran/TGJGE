@@ -118,6 +118,9 @@ void TG_init(
 		return;
 	}
 
+	//properly cleaning up the engine after an unexpected closure
+	atexit(TG_quit);
+	
 	//preparing shaders
 	TG_load_shader(TG_VERTEX, "shaders/vertex.glsl");
 	TG_load_shader(TG_FRAGMENT, "shaders/fragment.glsl");

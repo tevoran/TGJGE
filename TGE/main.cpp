@@ -1,10 +1,11 @@
 #include <TGJGE.h>
+#include <unistd.h>
 
 int main()
 {
-	TG_init("TGE", 800, 800, false, 60);
+	TG_init("TGE", 1920, 1080, true, 60);
 	TG_new_frame(0,0,0);
-	SDL_Delay(6000);
+	sleep(6);
 	TG_quit();
 	return 0;
 }

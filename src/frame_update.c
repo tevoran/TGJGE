@@ -13,6 +13,11 @@ extern unsigned int TG_delta_frametime;
 //takes in the clear color as a parameter
 void TG_new_frame(float r, float g, float b)
 {
+    //drawing
+    SDL_GL_SwapWindow(TG_main_window);
+    glClearColor(r,g,b,1.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     //setting up new frametime
     TG_last_frametime=TG_current_frametime;
     TG_current_frametime=SDL_GetTicks();
@@ -30,9 +35,4 @@ void TG_new_frame(float r, float g, float b)
     {
     };
     TG_keyboard_state=SDL_GetKeyboardState(NULL);
-
-    //drawing
-    SDL_GL_SwapWindow(TG_main_window);
-    glClearColor(r,g,b,1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }

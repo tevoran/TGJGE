@@ -3,7 +3,7 @@
 
 int main()
 {
-	TG_init("test window", 1920, 1080, true, 60);
+	TG_init("test window", 1920, 1080, false, 60);
 
 	TG_show_cursor(false);
 	TG_show_cursor(true);
