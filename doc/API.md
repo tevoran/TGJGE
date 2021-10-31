@@ -303,3 +303,42 @@ void TG_destroy_text(TG_text *text);
 
 ## Audio
 
+### Music
+
+Music can be played in the background or the foreground but the
+defining property of music is that only one can be active at any
+given time. Although several can be hold in memory. When you start
+playing a new music then the old one will halt.
+
+The music object is treated in the same manner as all the other
+objects of TGJGE. Music can be loaded by calling 
+
+```c
+TG_music* TG_new_music(const char *path);
+```
+
+and be destroyed by calling
+
+```c
+void TG_destroy_music(TG_music *music);
+```
+
+#### Interacting with Music
+
+There are two different ways of starting a music. It can be
+instantly started or faded in with a duration in milliseconds.
+
+```c
+void TG_music_fade_in_duration(TG_music *music, int ms);
+void TG_music_play(TG_music *music);
+```
+
+Additionally the music that is currently playing can be paused
+and resumed. It is important to note that this affects the
+currently played music, which can be only one at a time.
+Therefore the two related functions take no parameters.
+
+```c
+void TG_music_pause(); //pauses the currently running music
+void TG_music_resume(); //resumes the currently running music
+```
