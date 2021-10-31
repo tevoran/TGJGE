@@ -144,8 +144,11 @@ void TG_show_cursor(_Bool toggle);
 
 //audio
 TG_music* TG_new_music(const char *path);
+void TG_music_fade_in_duration(TG_music *music, int ms);
 void TG_music_play(TG_music *music);
 void TG_destroy_music(TG_music *music);
+void TG_music_pause(); //pauses the currently running music
+void TG_music_resume(); //resumes the currently running music
 
 #ifdef __MINGW32__
 	#undef main

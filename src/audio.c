@@ -18,6 +18,19 @@ TG_music* TG_new_music(const char *path)
 	return music;
 }
 
+void TG_music_play_fade_in(TG_music *music, int ms)
+{
+	if(music==NULL)
+	{
+		printf("ERROR: no music loaded\n");
+		return;
+	}
+	if(Mix_FadeInMusic(music->music, -1, ms)==-1)
+	{
+		printf("ERROR MESSAGE:\n%s\n", Mix_GetError());
+	}
+}
+
 void TG_music_play(TG_music *music)
 {
 	if(music==NULL)
@@ -29,6 +42,16 @@ void TG_music_play(TG_music *music)
 	{
 		printf("ERROR MESSAGE:\n%s\n", Mix_GetError());
 	}
+}
+
+void TG_music_pause()
+{
+	Mix_PauseMusic();	
+}
+
+void TG_music_resume()
+{
+	Mix_ResumeMusic();
 }
 
 void TG_destroy_music(TG_music *music)

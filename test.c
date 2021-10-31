@@ -10,6 +10,17 @@ int main()
 	TG_music *music=TG_new_music("assets/game-music.wav");
 	TG_music_play(music);
 
+	SDL_Delay(2000);
+
+	TG_music_pause();
+	SDL_Delay(1000);
+	TG_music_resume();
+	SDL_Delay(3000);
+
+	TG_music *music2=TG_new_music("assets/rain.mp3");
+	TG_music_play_fade_in(music2, 5000);
+	
+
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(
 		font, 
