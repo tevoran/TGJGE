@@ -57,22 +57,22 @@ TG_object* TG_new_object(
 	new_object->quad_data[0][0]=0.0;
 	new_object->quad_data[0][1]=0.0;
 	new_object->quad_data[0][2]=0.0;
-	new_object->quad_data[0][3]=0.0;
+	new_object->quad_data[0][3]=1.0;
 
 	new_object->quad_data[1][0]=1.0;
 	new_object->quad_data[1][1]=0.0;
 	new_object->quad_data[1][2]=1.0;
-	new_object->quad_data[1][3]=0.0;
+	new_object->quad_data[1][3]=1.0;
 
 	new_object->quad_data[2][0]=0.0;
 	new_object->quad_data[2][1]=1.0;
 	new_object->quad_data[2][2]=0.0;
-	new_object->quad_data[2][3]=1.0;
+	new_object->quad_data[2][3]=0.0;
 
 	new_object->quad_data[3][0]=1.0;
 	new_object->quad_data[3][1]=1.0;
 	new_object->quad_data[3][2]=1.0;
-	new_object->quad_data[3][3]=1.0;
+	new_object->quad_data[3][3]=0.0;
 
 	glGenVertexArrays(1, &new_object->vao);
 	glGenBuffers(1, &new_object->vbo);

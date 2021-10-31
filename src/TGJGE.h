@@ -67,6 +67,7 @@ struct TG_text
 	TG_texture *texture;
 } typedef TG_text;
 
+
 #include "TGJGE_internal.h"
 
 //function definitons

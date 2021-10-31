@@ -300,3 +300,6 @@ color 0.0f, 0.0f, 0.0f will be black.
 void TG_render_text(TG_text *text);
 void TG_destroy_text(TG_text *text);
 ```
+
+## Audio
+

@@ -94,7 +94,7 @@ TG_text* TG_new_text(
 	unsigned char *rgba_text=text_surface_rgba_u8->pixels;
 
 	unsigned int n1=0;
-	for(int iy=text_surface_rgba_u8->h-1; iy>=0; iy--)
+	for(int iy=0; iy<text_surface_rgba_u8->h; iy++)
 	{
 		for(int ix=0; ix<text_surface_rgba_u8->w; ix++)
 		{

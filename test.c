@@ -56,7 +56,7 @@ int main()
 		TG_render_object(fire_obj2);
 		TG_render_object(mouse);
 		TG_render_text(text);
-		TG_new_frame(0.1,0.0,0);
+		TG_new_frame(0.25,0.0,0);
 	}
 
 	TG_destroy_font(font);

@@ -26,7 +26,7 @@ TG_texture* TG_new_texture(
 	GLfloat *tex_data=malloc(size_x*size_y*4*sizeof(GLfloat));
 	//converting raw image data to something more OpenGL friendly
 	unsigned int n1=0;
-	for(int iy=size_y-1; iy>=0; iy--)
+	for(int iy=0; iy<size_y; iy++)
 	{
 		for(int ix=0; ix<size_x; ix++)
 		{
