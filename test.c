@@ -7,7 +7,8 @@ int main()
 
 	TG_show_cursor(false);
 
-	test_audio();
+	TG_music *music=TG_new_music("assets/game-music.wav");
+	TG_music_play(music);
 
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(

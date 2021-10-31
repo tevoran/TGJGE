@@ -67,6 +67,12 @@ struct TG_text
 	TG_texture *texture;
 } typedef TG_text;
 
+//background music
+//only one can play at a time
+struct TG_music
+{
+	Mix_Music *music;
+} typedef TG_music;
 
 #include "TGJGE_internal.h"
 
@@ -137,7 +143,9 @@ _Bool TG_mouse_is_right_pressed();
 void TG_show_cursor(_Bool toggle);
 
 //audio
-void test_audio();
+TG_music* TG_new_music(const char *path);
+void TG_music_play(TG_music *music);
+void TG_destroy_music(TG_music *music);
 
 #ifdef __MINGW32__
 	#undef main
