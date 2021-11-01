@@ -74,6 +74,11 @@ struct TG_music
 	Mix_Music *music;
 } typedef TG_music;
 
+struct TG_sfx
+{
+	Mix_Chunk *chunk;
+} typedef TG_sfx;
+
 #include "TGJGE_internal.h"
 
 //function definitons
@@ -143,12 +148,20 @@ _Bool TG_mouse_is_right_pressed();
 void TG_show_cursor(_Bool toggle);
 
 //audio
+//music
 TG_music* TG_new_music(const char *path);
 void TG_music_fade_in_duration(TG_music *music, int ms);
 void TG_music_play(TG_music *music);
 void TG_destroy_music(TG_music *music);
 void TG_music_pause(); //pauses the currently running music
 void TG_music_resume(); //resumes the currently running music
+
+//sfx / sound effects
+TG_sfx* TG_new_sfx(const char *path);
+void TG_sfx_play(TG_sfx *sfx);
+void TG_sfx_pause();
+void TG_sfx_resume();
+void TG_destroy_sfx(TG_sfx *sfx);
 
 #ifdef __MINGW32__
 	#undef main

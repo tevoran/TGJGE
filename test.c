@@ -8,18 +8,16 @@ int main()
 	TG_show_cursor(false);
 
 	TG_music *music=TG_new_music("assets/game-music.wav");
-	TG_music_play(music);
+	//TG_music_play(music);
+
+	TG_sfx *sfx=TG_new_sfx("assets/water-drops-daniel_simon.wav");
+	TG_sfx_play(sfx);
+
 
 	SDL_Delay(2000);
-
-	TG_music_pause();
-	SDL_Delay(1000);
-	TG_music_resume();
+	TG_sfx_pause();
 	SDL_Delay(3000);
-
-	TG_music *music2=TG_new_music("assets/rain.mp3");
-	TG_music_play_fade_in(music2, 5000);
-	
+	TG_sfx_resume();
 
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(
