@@ -323,6 +323,8 @@ and be destroyed by calling
 void TG_destroy_music(TG_music *music);
 ```
 
+It is possible to use MP3 and WAV files as background music.
+
 #### Interacting with Music
 
 There are two different ways of starting a music. It can be
@@ -341,4 +343,51 @@ Therefore the two related functions take no parameters.
 ```c
 void TG_music_pause(); //pauses the currently running music
 void TG_music_resume(); //resumes the currently running music
+```
+
+### Sound Effects (SFX)
+
+Additionally to the background music it is possible to use
+additional sound effects that don't play continuously but only
+only once and stop once they are done playing. And in opposition
+to the music it is possible to use several sound effects at the
+same time. 
+
+Currently only WAV files are officially supported as sound
+effects.
+
+To load a sound effect just use
+
+```c
+TG_sfx* TG_new_sfx(const char *path);
+```
+
+Once you are done using a sound effect it can be destroyed
+by calling
+
+```c
+void TG_destroy_sfx(TG_sfx *sfx);
+```
+
+#### Interacting with Sound Effects
+
+In a very similar fashion to the music a sound effect that was
+previously loaded can be played by using the TG_sfx_play function.
+
+```c
+void TG_sfx_play(TG_sfx *sfx);
+```
+
+And as previously mentioned you can play several sound effects at
+the same time. Also it is important to mention that sound effects
+are only played once per function call in TGJGE. They are not
+looping.
+
+There are two additional functions that are interesting when there
+are interruptions in the game as they are pausing or resuming all
+the sfx channels at once.
+
+```c
+void TG_sfx_pause();
+void TG_sfx_resume();
 ```
