@@ -10,7 +10,7 @@ int main()
 	{
 		TG_new_frame(0,0,0);
 		if(	TG_is_key_pressed(SDL_SCANCODE_ESCAPE) ||
-			TG_quit_window())
+			TG_is_quit_window())
 		{
 			quit=true;
 		}

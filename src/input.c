@@ -47,7 +47,7 @@ void TG_show_cursor(_Bool toggle)
 	}
 }
 
-_Bool TG_quit_window()
+_Bool TG_is_quit_window()
 {
 	if(TG_event.type==SDL_QUIT)
 	{

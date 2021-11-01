@@ -105,6 +105,17 @@ enable it, if you wish to do so.
 
 Use true to enable the cursor or false to disable the cursor.
 
+### Closing the Window
+
+TGJGE can catch the event when the user closes the window by
+clicking on the closing window icon of your window manager or 
+your GUI. If this happens an internal event is set and can be
+queried by using the function TG_is_quit_window. It is true if
+the event has been triggered and false if not.
+
+```c
+_Bool TG_is_quit_window();
+```
 
 ## Objects
 
