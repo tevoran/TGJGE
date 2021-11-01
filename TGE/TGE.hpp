@@ -4,8 +4,6 @@
 #include <TGJGE.h>
 #include <iostream>
 
-#define TGE_STYLE_ELEMENTS 1 //the number of elements in the style image
-
 namespace tge
 {
 	//general editor singleton class
@@ -19,7 +17,8 @@ namespace tge
 		TG_object *toolbar=NULL;
 
 		//elements
-
+		TG_object *new_project=NULL;
+		TG_object *save_project=NULL;
 
 		//functions
 		editor();
