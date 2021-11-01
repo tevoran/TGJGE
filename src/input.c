@@ -1,6 +1,7 @@
 #include "TGJGE.h"
 
 extern const Uint8 *TG_keyboard_state;
+extern SDL_Event TG_event;
 extern int TG_res_x;
 extern int TG_res_y;
 
@@ -44,4 +45,13 @@ void TG_show_cursor(_Bool toggle)
 	{
 		SDL_ShowCursor(SDL_DISABLE);
 	}
+}
+
+_Bool TG_quit_window()
+{
+	if(TG_event.type==SDL_QUIT)
+	{
+		return true;
+	}
+	return false;
 }

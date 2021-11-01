@@ -140,6 +140,7 @@ void TG_render_text(TG_text *text);
 void TG_destroy_text(TG_text *text);
 
 //input
+_Bool TG_quit_window(); //is true if user wants to close the window
 _Bool TG_is_key_pressed(unsigned char key);
 void TG_mouse_position(float *x, float *y);
 _Bool TG_mouse_is_left_pressed();
