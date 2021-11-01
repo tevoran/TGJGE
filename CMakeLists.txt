@@ -43,6 +43,7 @@ file(COPY shaders DESTINATION .)
 file(COPY assets DESTINATION .)
 
 #creating TGE (T3V's Game Jam Game Engine Editor)
+include_directories(TGE/)
 file(GLOB_RECURSE "tge" SRC TGE/*.cpp)
 add_executable(tge ${tge})
 target_link_libraries(tge LINK_PRIVATE tgjge)
