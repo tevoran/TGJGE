@@ -8,9 +8,10 @@ void tge::editor::main_loop()
 	{
 		//rendering overlay elements
 		//windows
-		TG_render_object(toolbar);
-			TG_render_object(new_project);
-			TG_render_object(save_project);
+		for(tge::window& window : windows)
+		{
+			window.render();
+		}
 
 		TG_new_frame(0,0,0);
 		//checking if program should end
