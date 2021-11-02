@@ -52,6 +52,59 @@ std::string& tge::window::name()
 	return m_window_name;
 }
 
+void tge::window::show_description(TG_object *mouse)
+{
+	static int hovering_duration_ms=0;
+	static TG_object *current_hovering_object=NULL;
+	static tge::info_text_window *description_window=NULL;
+
+	//used for checking if a collision has happened in this frame	
+	bool collision=false;
+	for(int i=0; i<element.size(); i++)
+	{
+		if(current_hovering_object)
+		{
+			if(	current_hovering_object==element[i].object &&
+				TG_is_colliding(mouse, element[i].object))
+			{
+				hovering_duration_ms+=TG_delta_time();
+				collision=true;
+				if(hovering_duration_ms>TGE_ELEMENT_WHEN_SHOW_DESCRIPTION_MS)
+				{
+					if(!description_window)
+					{
+						tge::editor& editor=tge::editor::get();
+						description_window= new tge::info_text_window(
+							element[i].description,
+							editor.get_font(),
+							editor.get_style());		
+					}
+					description_window->render();
+				}
+			}
+		}
+		else
+		{
+			if(TG_is_colliding(mouse, element[i].object))
+			{
+				current_hovering_object=element[i].object;
+				collision=true;
+				hovering_duration_ms=0;
+				if(!description_window)
+				{
+					delete description_window;
+				}
+				description_window=NULL;
+			}
+		}
+	}
+	if(collision==false)
+	{
+		current_hovering_object=NULL;
+		hovering_duration_ms=0;
+	}
+}
+
 void tge::window::render()
 {
 	TG_render_object(m_background);

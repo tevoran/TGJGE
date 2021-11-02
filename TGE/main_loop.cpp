@@ -6,11 +6,17 @@ void tge::editor::main_loop()
 	bool quit=false;
 	while(!quit)
 	{
+		//interactions with windows and elements
+		TG_mouse_position(&m_mouse_x, &m_mouse_y);
+		TG_set_position_object(m_mouse, m_mouse_x, m_mouse_y);
+
+
 		//rendering overlay elements
 		//windows and their elements
 		for(tge::window& window : windows)
 		{
 			window.render();
+			window.show_description(m_mouse); //shows an icon descripton
 		}
 
 		TG_new_frame(0,0,0);

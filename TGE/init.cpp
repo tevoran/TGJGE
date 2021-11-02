@@ -7,6 +7,10 @@ tge::editor::editor()
 
 	//loading editor relevant data
 	style=TG_new_texture("TGE/assets/style.png", TGE_STYLE_ELEMENTS, false);
+	font=TG_new_font("TGE/assets/OpenSans-Regular.ttf", 45);
+
+	//creating mouse (collision box) for interactions with windows and elements
+	m_mouse=TG_new_object(0.01,0.01, 0.01, 0.01);
 
 	//creating windows
 	std::list<tge::window>::iterator it;
@@ -24,6 +28,7 @@ tge::editor::editor()
 
 tge::editor::~editor()
 {
+	TG_destroy_object(m_mouse);
 	TG_destroy_texture(style);
 	std::cout << "quitting TGE\n";
 	TG_quit();
