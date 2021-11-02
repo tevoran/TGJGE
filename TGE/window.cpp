@@ -28,21 +28,23 @@ tge::window::window(
 		false);
 }
 
-void tge::window::add_element(int style_type)
+void tge::window::add_element(int style_type, std::string description)
 {
-	TG_object *tmp_object=TG_new_object(
+	tge::element tmp_element;
+	tmp_element.description=description;
+	tmp_element.object=TG_new_object(
 		TGE_ELEMENT_SIZE_X, 
 		TGE_ELEMENT_SIZE_Y,
 		m_pos_x+TGE_ELEMENT_SIZE_X*element.size(),
 		m_pos_y);
-	TG_object_use_texture(tmp_object, m_style);
+	TG_object_use_texture(tmp_element.object, m_style);
 	TG_object_start_animation(
-		tmp_object,
+		tmp_element.object,
 		style_type,
 		style_type,
 		0,
 		false);
-	element.emplace_back(tmp_object);
+	element.emplace_back(tmp_element);
 }
 
 std::string& tge::window::name()
@@ -55,11 +57,15 @@ void tge::window::render()
 	TG_render_object(m_background);
 	for(int i=0; i<element.size(); i++)
 	{
-		TG_render_object(element[i]);
+		TG_render_object(element[i].object);
 	}
 }
 
 tge::window::~window()
 {
+	for(int i=0; i<element.size(); i++)
+	{
+		TG_destroy_object(element[i].object);
+	}
 	TG_destroy_object(m_background);
 }

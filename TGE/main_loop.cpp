@@ -7,7 +7,7 @@ void tge::editor::main_loop()
 	while(!quit)
 	{
 		//rendering overlay elements
-		//windows
+		//windows and their elements
 		for(tge::window& window : windows)
 		{
 			window.render();

@@ -18,15 +18,13 @@ tge::editor::editor()
 		TGE_TOOLBAR_POS_Y,
 		std::string(TGE_TOOLBAR_NAME));
 	it=windows.begin();
-	it->add_element(TGE_ELEMENT_NEW);
-	it->add_element(TGE_ELEMENT_SAVE);
+	it->add_element(TGE_ELEMENT_NEW, std::string(TGE_ELEMENT_NEW_DESCRIPTION));
+	it->add_element(TGE_ELEMENT_SAVE, std::string(TGE_ELEMENT_SAVE_DESCRIPTION));
 }
 
 tge::editor::~editor()
 {
 	TG_destroy_texture(style);
-	TG_destroy_object(new_project);
-	TG_destroy_object(save_project);
 	std::cout << "quitting TGE\n";
 	TG_quit();
 }

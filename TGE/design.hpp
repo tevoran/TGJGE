@@ -15,3 +15,7 @@
 //elements
 #define TGE_ELEMENT_SIZE_X 0.028
 #define TGE_ELEMENT_SIZE_Y 0.05
+
+//descriptions
+#define TGE_ELEMENT_NEW_DESCRIPTION "creates a new project"
+#define TGE_ELEMENT_SAVE_DESCRIPTION "saves the current project"

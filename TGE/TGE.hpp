@@ -12,9 +12,9 @@ namespace tge
 {
 	struct element
 	{
-		TG_object *m_object;
-		int m_style_type;
-		std::string m_description;
+		TG_object *object;
+		int style_type;
+		std::string description;
 	};
 
 	class window
@@ -29,7 +29,7 @@ namespace tge
 		float m_size_y;
 
 		//elements
-		std::vector<TG_object*> element;
+		std::vector<tge::element> element;
 	public:
 		window(
 			TG_texture *style, 
@@ -40,7 +40,7 @@ namespace tge
 			std::string window_name);
 		void render();
 		std::string& name();
-		void add_element(int style_type);
+		void add_element(int style_type, std::string description);
 		~window();
 	};
 
