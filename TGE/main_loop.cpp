@@ -10,6 +10,10 @@ void tge::editor::main_loop()
 		TG_mouse_position(&m_mouse_x, &m_mouse_y);
 		TG_set_position_object(m_mouse, m_mouse_x, m_mouse_y);
 
+		for(tge::window& window : windows)
+		{
+			window.element_interaction(m_mouse);
+		}
 
 		//rendering overlay elements
 		//windows and their elements

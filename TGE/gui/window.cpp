@@ -31,6 +31,7 @@ tge::window::window(
 void tge::window::add_element(int style_type, std::string description)
 {
 	tge::element tmp_element;
+	tmp_element.type=style_type; //saving the type of the element
 	tmp_element.description=description;
 	tmp_element.object=TG_new_object(
 		TGE_ELEMENT_SIZE_X, 
@@ -45,6 +46,44 @@ void tge::window::add_element(int style_type, std::string description)
 		0,
 		false);
 	element.emplace_back(tmp_element);
+}
+
+void tge::window::element_interaction(TG_object *mouse)
+{
+	static bool mouse_down=false;
+	//bool mouse_down_this_frame=false;
+	for(int i=0; i<element.size(); i++)
+	{
+		if(	TG_is_colliding(mouse, element[i].object) &&
+			TG_mouse_is_left_pressed() && 
+			!mouse_down)
+		{
+			//mouse_down_this_frame=true;
+			mouse_down=true;
+			switch(element[i].type)
+			{
+				case TGE_ELEMENT_NEW:
+					std::cout << "NEW PROJECT\n";
+					break;
+
+				case TGE_ELEMENT_SAVE:
+					std::cout << "SAVING PROJECT\n";
+					break;
+
+				case TGE_ELEMENT_LOAD:
+					std::cout << "LOADING\n";
+					break;
+
+				default:
+					break;
+			}
+		}
+	}
+	//reset mouse trigger if n
+	if(mouse_down && !TG_mouse_is_left_pressed())
+	{
+		mouse_down=false;
+	}
 }
 
 std::string& tge::window::name()

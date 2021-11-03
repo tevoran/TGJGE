@@ -1,12 +1,17 @@
 #pragma once
 
-#include "design.hpp"
+//engine header
 #include <TGJGE.h>
+
+//stdlib headers
 #include <iostream>
 #include <list>
 #include <iterator>
 #include <string>
 #include <vector>
+
+//TGE intern headers
+#include <design.hpp>
 
 namespace tge
 {
@@ -25,10 +30,11 @@ namespace tge
 		~info_text_window();
 	};
 
+	//gui element
 	struct element
 	{
 		TG_object *object;
-		int style_type;
+		int type;
 		std::string description;
 	};
 
@@ -45,6 +51,7 @@ namespace tge
 
 		//elements
 		std::vector<tge::element> element;
+
 	public:
 		window(
 			TG_texture *style, 
@@ -57,6 +64,7 @@ namespace tge
 		void render();
 		std::string& name();
 		void add_element(int style_type, std::string description);
+		void element_interaction(TG_object *mouse);
 		~window();
 	};
 
@@ -80,6 +88,7 @@ namespace tge
 		float m_mouse_y;
 		TG_object *m_mouse;
 
+
 		//functions
 		editor();
 		~editor();
@@ -88,6 +97,11 @@ namespace tge
 		void main_loop();
 		TG_font* get_font(){return font;};
 		TG_texture* get_style(){return style;};
+
+		//user interactions
+		//void new_project();
+		//void load_project();
+		//void save_project();
 
 		//singleton related stuff	
 		static editor& get(){static editor instance; return instance;};
