@@ -23,6 +23,7 @@ tge::editor::editor()
 		std::string(TGE_TOOLBAR_NAME));
 	it=windows.begin();
 	it->add_element(TGE_ELEMENT_NEW, std::string(TGE_ELEMENT_NEW_DESCRIPTION));
+	it->add_element(TGE_ELEMENT_LOAD, std::string(TGE_ELEMENT_LOAD_DESCRIPTION));
 	it->add_element(TGE_ELEMENT_SAVE, std::string(TGE_ELEMENT_SAVE_DESCRIPTION));
 }
 

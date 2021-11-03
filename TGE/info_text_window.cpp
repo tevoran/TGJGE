@@ -1,5 +1,7 @@
 #include <TGE.hpp>
 
+//used for displaying the little information window when hovering above
+//an icon with the mouse
 tge::info_text_window::info_text_window(
 	std::string text, 
 	TG_font *font, 
@@ -19,6 +21,7 @@ tge::info_text_window::info_text_window(
 		0,
 		false);
 
+	//text that gets displayed on top of the background
 	text_object=TG_new_text(
 		font,
 		text.c_str(),
