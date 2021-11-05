@@ -121,6 +121,15 @@ TG_texture* TG_new_texture(
 	const char *path,
 	int num_frames,
 	_Bool linear_interpolation_toggle);
+
+	//the function uses image data from the memory as a
+	//texture and expects the pixelformat RGBA
+TG_texture* TG_new_texture_custom(
+	void *image_data,
+	int size_x,
+	int size_y,
+	int num_frames,
+	_Bool linear_interpolation_toggle);
 void TG_destroy_texture(TG_texture *texture);
 
 //text

@@ -1,5 +1,15 @@
 #include <TGJGE.h>
 
+#define RED 0.9, 0.1, 0.1, 1.0
+#define BLU 0.1, 0.2, 0.9, 1.0
+
+GLfloat test_tex[]=
+{
+	RED, RED, RED, RED,
+	RED, BLU, BLU, RED,
+	RED, BLU, BLU, RED,
+	BLU, BLU, BLU, BLU
+};
 
 int main()
 {
@@ -8,16 +18,7 @@ int main()
 	TG_show_cursor(false);
 
 	TG_music *music=TG_new_music("assets/game-music.wav");
-	//TG_music_play(music);
-
-	TG_sfx *sfx=TG_new_sfx("assets/water-drops-daniel_simon.wav");
-	TG_sfx_play(sfx);
-
-
-	SDL_Delay(2000);
-	TG_sfx_pause();
-	SDL_Delay(3000);
-	TG_sfx_resume();
+	TG_music_play(music);
 
 	TG_font *font=TG_new_font("assets/OpenSans-Regular.ttf", 500);
 	TG_text *text=TG_new_text(
@@ -31,7 +32,10 @@ int main()
 		0.5,
 		0.01);
 
-	TG_texture *crate_tex=TG_new_texture("assets/crate.bmp", 1, false);
+
+
+	TG_texture *crate_tex=TG_new_texture_custom(&test_tex, 4, 4, 1, false);
+	//TG_new_texture("assets/crate.bmp", 1, false);
 	TG_object *crate[10];
 	for(int i=0; i<10; i++)
 	{
