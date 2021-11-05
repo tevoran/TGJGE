@@ -177,6 +177,9 @@ absolute one and is given in radians. Therefore a full rotation equals
 Textures can be loaded from images in the following formats JPEG, PNG, BMP,
 GIF, PSD, HDR, PIC and PNM. The textures can be attached to TG_objects and
 will be displayed with them and turn them effectively into sprites.
+It is also possible to use images that were created in memory as
+textures. Then you need to call TG_new_texture_custom() instead
+of TG_new_texture().
 
 The num_frames input is especially important if a sprite
 needs to be animated later on. If it's not animated then one can leave
@@ -192,8 +195,17 @@ when it's activated with true. Then low res textures can become quite blurry
 with very loosely visible borders.
 
 ```c
+//loading a texture from an image file
 TG_texture* TG_new_texture(
 	const char *path,
+	int num_frames,
+	_Bool linear_interpolation_toggle);
+
+//using image data from memory as a texture
+TG_texture* TG_new_texture_custom(
+	void *image_data,
+	int size_x,
+	int size_y,
 	int num_frames,
 	_Bool linear_interpolation_toggle);
 ```
