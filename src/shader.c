@@ -118,6 +118,8 @@ void TG_load_shader(const int shader_type, const char *shader_location)
 		glAttachShader(TG_shader_program, TG_fragment_shader);
 		glLinkProgram(TG_shader_program);
 		glUseProgram(TG_shader_program);
+		glDeleteShader(TG_vertex_shader);
+		glDeleteShader(TG_fragment_shader);
 		printf("use new shader program\n");
 	}
 	fclose(shader_file);
