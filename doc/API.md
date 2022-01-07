@@ -42,7 +42,7 @@ engine's user to get the current delta time.
 
 ## Time
 
-As mentioned in "Updating the window" the TG_flip() function updates
+As mentioned in "Updating the window" the TG_new_frame() function updates
 all the timers that are used by the engine itself.
 
 To get the current delta time you can use these two functions.
